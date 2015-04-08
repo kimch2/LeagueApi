@@ -1,36 +1,45 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "League API";
     var matchCreation = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(Model.CurrentMatchData.MatchCreation);
+    var bucketDateTimeString = String.Format("{0} GMT", Model.BucketDateTime);
 }
 @model LeagueApi.Models.MatchesViewModel
 <style type="text/css">
     .seperator { padding-top: 10px; padding-bottom: 10px; }
     .fullWidth { width: 100%;}
+    .inline { display: inline; }
+    label { margin-bottom: 0;}
 </style>
 
 <div class="seperator"></div>
 
 <div class="row">
-    <div class="col-md-10 seperator">
-        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-        {
-            @Html.DropDownListFor(m => m.CurrentMatchId, Model.MatchItems, new { onchange = "this.form.submit();" })
-        }
-
+    <div class="col-md-10">
         <div class="seperator">
-            <div>
-                @Html.Label("Match Started")
-                @Html.DisplayFor(m => matchCreation)
-            </div>
-            <div>
-                @Html.Label("Match Lasted")
-                @Html.DisplayFor(m => m.CurrentMatchData.MatchDuration)
-            </div>
+            @Html.Label("Bucket")<br/>
+            <span>@bucketDateTimeString</span>
         </div>
-        <div class="seperator">
-            
-        </div>
-
-    @Html.DisplayFor(m => m.Teams, Model.ChampionData)
+        <table class="fullWidth">
+            <thead>
+            <tr>
+                <td>@Html.Label("Select A Game")</td>
+                <td>@Html.Label("Match Started")</td>
+                <td>@Html.Label("Match Lasted")</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                    {
+                        @Html.DropDownListFor(m => m.CurrentMatchId, Model.MatchItems, new {onchange = "this.form.submit();"})
+                    }
+                </td>
+                <td>@matchCreation</td>
+                <td>@Html.DisplayFor(m => m.CurrentMatchData.MatchDuration)</td>
+            </tr>
+            </tbody>
+        </table>
+        @Html.DisplayFor(m => m.Teams, Model.ChampionData)
     </div>
 </div>

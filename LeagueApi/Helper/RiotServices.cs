@@ -14,11 +14,9 @@ namespace LeagueApi.Helper
 
     public class ApiChallengeService : RiotService
     {
-        public static List<int> CallService()
+        public static List<int> CallService(int last5MinTime)
         {
             BaseAddress = "https://na.api.pvp.net/api/lol/na/v4.1/game/ids";
-            var now = DateTime.UtcNow;
-            var last5MinTime = Convert.ToInt32(Math.Floor((now.AddHours(-1).AddMinutes(-now.Minute).AddSeconds(-now.Second) - new DateTime(1970, 1, 1)).TotalSeconds));
             var address = String.Format("{0}?beginDate={1}&{2}", BaseAddress, last5MinTime, RiotApiSettings.ApiKeyQuery);
             var json = Call(address);
             var resultList = JsonConvert.DeserializeObject<List<int>>(json);

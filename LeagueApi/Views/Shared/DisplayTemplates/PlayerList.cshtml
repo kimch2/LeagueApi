@@ -15,24 +15,29 @@
                 <td>Kills</td>
                 <td>Deaths</td>
                 <td>Assists</td>
-                <td>Kills</td>
+                <td>CS</td>
                 <td>Damage</td>
                 <td>Damage To Champions</td>
                 <td>Gold Earned</td>
             </tr>
         </thead>
         <tbody>
-            @Html.DisplayFor(m => Model.Players)
+            @Html.DisplayFor(m => m.Players)
         </tbody>
         <tfoot>
-        <tr>
-            <td>Total</td>
-            <td>Kills</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
+        <tr></tr>
+            <tr>
+                <td>Totals</td>
+                <td></td>
+                <td>@Html.DisplayFor(m => m.Totals.Statistics.Kills)</td>
+                <td>@Html.DisplayFor(m => m.Totals.Statistics.Deaths)</td>
+                <td>@Html.DisplayFor(m => m.Totals.Statistics.Assists)</td>
+                <td>@Html.DisplayFor(m => m.Totals.Statistics.MinionsKilled)</td>
+                <td>@Html.DisplayFor(m => m.Totals.Statistics.TotalDamageDealt)</td>
+                <td>@Html.DisplayFor(m => m.Totals.Statistics.TotalDamageDealtToChampions)</td>
+                <td>@Html.DisplayFor(m => m.Totals.Statistics.GoldEarned)</td>
+
+            </tr>
         </tfoot>
     </table>
 </div>

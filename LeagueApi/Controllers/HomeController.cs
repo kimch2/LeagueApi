@@ -15,12 +15,30 @@ namespace LeagueApi.Controllers
             set { Session["MatchesVM"] = value; }
         }
 
+        private static DateTime BucketDateTime
+        {
+            get
+            {
+                var now = DateTime.UtcNow;
+                return now.AddHours(-1).AddMinutes(-now.Minute).AddSeconds(-now.Second);
+            }
+        }
+
+        private static int BucketTime
+        {
+            get
+            {
+                return Convert.ToInt32(Math.Floor((BucketDateTime - new DateTime(1970, 1, 1)).TotalSeconds));
+            }
+        }
+        
         [HttpGet]
         public ActionResult Index()
         {
             var model = new MatchesViewModel();
             model.ChampionData = ChampionsService.CallService();
-            model.Matches = ApiChallengeService.CallService();
+            model.BucketDateTime = BucketDateTime;
+            model.Matches = ApiChallengeService.CallService(BucketTime);
             model.CurrentMatchData = MatchService.CallService(model.Matches.First());
             model.CurrentMatchId = model.Matches.First();
 
@@ -37,16 +55,16 @@ namespace LeagueApi.Controllers
             return View(currentModel);
         }
 
-        public ActionResult About()
+        public ActionResult Champions()
         {
-            ViewBag.Message = "Your application description page.";
+            var model = new ChampionsViewModel
+            {
+                ChampionData = ChampionsService.CallService(),
+                Matches = ApiChallengeService.CallService(BucketTime).Take(9)
+            };
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            foreach (var match in model.Matches)
+                model.MatchData.Add(MatchService.CallService(match));
 
             return View();
         }

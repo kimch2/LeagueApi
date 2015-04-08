@@ -1,0 +1,38 @@
+﻿@model LeagueApi.Models.PlayerList
+
+@{
+    string team = "Team " + (ViewBag.Index + 1);
+    var winner = Model.Players.First().Statistics.Winner;
+}
+<div class="seperator">
+    @Html.Label(team)
+    @Html.Label(winner ? "Won" : "Lost")
+    <table class="fullWidth">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Level</td>
+                <td>Kills</td>
+                <td>Deaths</td>
+                <td>Assists</td>
+                <td>Kills</td>
+                <td>Damage</td>
+                <td>Damage To Champions</td>
+                <td>Gold Earned</td>
+            </tr>
+        </thead>
+        <tbody>
+            @Html.DisplayFor(m => Model.Players)
+        </tbody>
+        <tfoot>
+        <tr>
+            <td>Total</td>
+            <td>Kills</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        </tfoot>
+    </table>
+</div>

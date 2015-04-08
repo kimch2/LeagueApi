@@ -12,15 +12,11 @@ namespace LeagueApi.Helper
         private const string ApiKey = "67337c4e-a275-45ab-a6f5-ea809254bb4c";
     }
 
-    public class ApiChallenge : RiotService
+    public class ApiChallengeService : RiotService
     {
-        public ApiChallenge()
+        public static List<int> CallService()
         {
             BaseAddress = "https://na.api.pvp.net/api/lol/na/v4.1/game/ids";
-        }
-
-        public List<int> CallService()
-        {
             var now = DateTime.UtcNow;
             var last5MinTime = Convert.ToInt32(Math.Floor((now.AddHours(-1).AddMinutes(-now.Minute).AddSeconds(-now.Second) - new DateTime(1970, 1, 1)).TotalSeconds));
             var address = String.Format("{0}?beginDate={1}&{2}", BaseAddress, last5MinTime, RiotApiSettings.ApiKeyQuery);
@@ -32,18 +28,26 @@ namespace LeagueApi.Helper
 
     public class MatchService : RiotService
     {
-
-        public MatchService()
+        public static MatchResponse CallService(int matchId)
         {
             BaseAddress = "https://na.api.pvp.net/api/lol/na/v2.2/match/";
-        }
-
-        public MatchResponse CallService(int matchId)
-        {
             var address = String.Format("{0}{1}?{2}", BaseAddress, matchId, RiotApiSettings.ApiKeyQuery);
             var json = Call(address);
             var resultList = JsonConvert.DeserializeObject<MatchResponse>(json);
+            return resultList;
+        }
+    }
 
+    public class ChampionsService : RiotService
+    {
+        private const string DataById = "dataById=true";
+
+        public static ChampionsResponse CallService()
+        {
+            BaseAddress = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion";
+            var address = String.Format("{0}?{1}&{2}", BaseAddress, DataById, RiotApiSettings.ApiKeyQuery);
+            var json = Call(address);
+            var resultList = JsonConvert.DeserializeObject<ChampionsResponse>(json);
             return resultList;
         }
     }
@@ -68,7 +72,7 @@ namespace LeagueApi.Helper
 
     public abstract class RiotService
     {
-        public string BaseAddress;
+        public static string BaseAddress;
 
         public static string Call(string address)
         {

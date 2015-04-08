@@ -1,0 +1,18 @@
+﻿@using LeagueApi.Models
+@model LeagueApi.Models.Player
+
+@{
+    var champions = (Dictionary<int, ChampionResponse>) ViewBag.Champions;
+}
+
+<tr>
+    <td>@Html.DisplayFor(m => champions.First(x => x.Key == Model.ChampionId).Value.Name)</td>
+    <td>@Html.DisplayFor(m => Model.Statistics.ChampLevel)</td>
+    <td>@Html.DisplayFor(m => Model.Statistics.Kills)</td>
+    <td>@Html.DisplayFor(m => Model.Statistics.Deaths)</td>
+    <td>@Html.DisplayFor(m => Model.Statistics.Assists)</td>
+    <td>@Html.DisplayFor(m => Model.Statistics.MinionsKilled)</td>
+    <td>@Html.DisplayFor(m => Model.Statistics.TotalDamageDealt)</td>
+    <td>@Html.DisplayFor(m => Model.Statistics.TotalDamageDealtToChampions)</td>
+    <td>@Html.DisplayFor(m => Model.Statistics.GoldEarned)</td>
+</tr>

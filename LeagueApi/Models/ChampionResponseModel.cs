@@ -1,7 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace LeagueApi.Models
 {
+    public class ChampionsResponse
+    {
+
+        [JsonProperty("data")]
+        public Dictionary<int, ChampionResponse> Champions { get; set; }
+    }
+
     public class ChampionResponse
     {
         [JsonProperty("id")]

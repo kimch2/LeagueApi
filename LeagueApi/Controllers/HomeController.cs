@@ -1,19 +1,40 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 using LeagueApi.Helper;
+using LeagueApi.Models;
 
 namespace LeagueApi.Controllers
 {
     public class HomeController : Controller
     {
+        private MatchesViewModel CurrentModel
+        {
+            get { return (MatchesViewModel) Session["MatchesVM"]; }
+            set { Session["MatchesVM"] = value; }
+        }
+
+        [HttpGet]
         public ActionResult Index()
         {
-            var test2 = new ChampionService(432);
-            var result2 = test2.CallService();
+            var model = new MatchesViewModel();
+            model.ChampionData = ChampionsService.CallService();
+            model.Matches = ApiChallengeService.CallService();
+            model.CurrentMatchData = MatchService.CallService(model.Matches.First());
+            model.CurrentMatchId = model.Matches.First();
 
-            var test = new MatchService();
-            var result = test.CallService(1786759297);
+            CurrentModel = model;
+            return View(model);
+        }
 
-            return View(result);
+        [HttpPost]
+        public ActionResult Index(int currentMatchId)
+        {
+            var currentModel = CurrentModel;
+            currentModel.CurrentMatchData = MatchService.CallService(currentMatchId);
+            CurrentModel = currentModel;
+            return View(currentModel);
         }
 
         public ActionResult About()

@@ -170,6 +170,7 @@
     <Compile Include="Models\ChampionResponseModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MatchesViewModel.cs" />
     <Compile Include="Models\MatchResponseModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -199,6 +200,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Shared\EditorTemplates\SelectListItem.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -234,8 +238,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\Int32.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\MatchResponse.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Player.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SelectList.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\DisplayTemplates\TeamList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PlayerList.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

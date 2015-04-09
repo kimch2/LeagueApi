@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueApi", "LeagueApi\LeagueApi.csproj", "{AD655CF5-C599-4A9D-B03D-2BBE26D9DE3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiotAPI GameCollector", "RiotAPI GameCollector\RiotAPI GameCollector.csproj", "{635C18B4-3E92-487D-8C55-0D487C9096CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiotServices", "RiotServices\RiotServices.csproj", "{6F9437F1-D57C-4EE3-913C-19140244FB0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{AD655CF5-C599-4A9D-B03D-2BBE26D9DE3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD655CF5-C599-4A9D-B03D-2BBE26D9DE3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD655CF5-C599-4A9D-B03D-2BBE26D9DE3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{635C18B4-3E92-487D-8C55-0D487C9096CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{635C18B4-3E92-487D-8C55-0D487C9096CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{635C18B4-3E92-487D-8C55-0D487C9096CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{635C18B4-3E92-487D-8C55-0D487C9096CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F9437F1-D57C-4EE3-913C-19140244FB0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F9437F1-D57C-4EE3-913C-19140244FB0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F9437F1-D57C-4EE3-913C-19140244FB0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F9437F1-D57C-4EE3-913C-19140244FB0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

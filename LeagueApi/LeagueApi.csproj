@@ -156,21 +156,14 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\RiotServices.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ChampionResponseModel.cs" />
     <Compile Include="Models\ChampionsViewModel.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MatchesViewModel.cs" />
     <Compile Include="Models\MatchResponseModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -245,7 +238,12 @@
     <Content Include="Views\Shared\DisplayTemplates\PlayerList.cshtml" />
     <Content Include="Views\Home\Champions.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\RiotServices\RiotServices.csproj">
+      <Project>{6f9437f1-d57c-4ee3-913c-19140244fb0b}</Project>
+      <Name>RiotServices</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

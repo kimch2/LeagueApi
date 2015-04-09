@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RiotData" Class="RiotDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\~Git\LeagueApi\LeagueApi\App_Data\RiotData.mdf;Integrated Security=True" SettingsObjectName="RiotAPI_GameCollector.Properties.Settings" SettingsPropertyName="RiotDataConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Match" Member="Matches">
+    <Type Name="Match">
+      <Column Name="MatchId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MapId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MatchCreation" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MatchDuration" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MatchMode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MatchType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MatchVersion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ParticipantIdentities" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PlatformId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="QueueType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Region" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Season" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Match_Team" Member="Teams" ThisKey="MatchId" OtherKey="MatchId" Type="Team" />
+      <Association Name="Match_Participant" Member="Participants" ThisKey="MatchId" OtherKey="MatchId" Type="Participant" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Team" Member="Teams">
+    <Type Name="Team">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MatchId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Bans" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="BaronKills" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DominionVictoryScore" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="DragonKills" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FirstBaron" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FirstBlood" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FirstDragon" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FirstInhibitor" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="InhibitorKills" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TeamId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TowerKills" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VilemaxKills" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Winner" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Match_Team" Member="Match" ThisKey="MatchId" OtherKey="MatchId" Type="Match" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Participant" Member="Participants">
+    <Type Name="Participant">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MatchId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ChampionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HighestAchievedSeasonTier" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Masteries" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParticipantId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Runes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Spell1Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Spell2Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Stats" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TeamId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Participant_ParticipantStat" Member="ParticipantStat" ThisKey="Id" OtherKey="Id" Type="ParticipantStat" Cardinality="One" />
+      <Association Name="Participant_Player" Member="Player" ThisKey="Id" OtherKey="Id" Type="Player" Cardinality="One" />
+      <Association Name="Match_Participant" Member="Match" ThisKey="MatchId" OtherKey="MatchId" Type="Match" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ParticipantStats" Member="ParticipantStats">
+    <Type Name="ParticipantStat">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Assists" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ChampLevel" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CombatPlayerScore" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Deaths" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="DoubleKills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FirstBloodAssist" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FirstBloodKill" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FirstInhibitorAssist" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FirsInhibitorKill" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FirstTowerAssist" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FirstTowerKill" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GoldEarned" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="GoldSpent" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="InhibitorKills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Item0" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Item1" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Item2" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Item3" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Item4" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Item5" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Item6" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="KillingSprees" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Kills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LargestCriticalStrike" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LargestKillingSpree" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LargestMultiKill" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MagicDamageDealt" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MagicDamageDealtToChampions" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MagicDamageTaken" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MinionsKilled" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NeutralMinionsKilled" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NeutralMinionsKilledEnemyJungle" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NeutralMinionsKilledTeamJungle" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NodeCapture" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NodeCaptureAssist" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NodeNeutralize" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NodeNeutralizeAssist" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ObjectivePlayerScore" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PentaKills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PhysicalDamageDealt" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PhysicalDamageDealtToChampions" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PhysicalDamageTaken" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="QuadraKills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SightWardsBoughtInGame" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TeamObjective" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalDamageDealt" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalDamageDealtToChampions" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalDamageTaken" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalHeal" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalPlayerScore" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalScoreRank" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalTimeCrowdControlDealt" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalUnitsHealed" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TowerKills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TripleKills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TrueDamageDealt" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TrueDamageDealtToChampions" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TrueDamageTaken" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UnrealKills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="VisionWardsBoughtInGame" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="WardsKilled" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="WardsPlaced" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Winner" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Participant_ParticipantStat" Member="Participant" ThisKey="Id" OtherKey="Id" Type="Participant" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Player" Member="Players">
+    <Type Name="Player">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MatchHistoryUri" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProfileIcon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SummonerId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SummonerName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ParticipantId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Participant_Player" Member="Participant" ThisKey="Id" OtherKey="Id" Type="Participant" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

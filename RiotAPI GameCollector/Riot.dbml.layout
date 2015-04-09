@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 22.375" name="Riot">
+  <DataContextMoniker Name="/RiotDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5ee6447c-55de-40d5-94d3-c4adb5954f63" absoluteBounds="0.75, 10.375, 2, 3.1170068359374987">
+      <DataClassMoniker Name="/RiotDataContext/Match" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5922cadd-7734-4abe-aeed-bf859d2a0644" absoluteBounds="0.765, 10.835, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b98d8e69-fa75-4acb-aaaf-4448504e5a74" absoluteBounds="3.5, 18.375, 2, 3.6939111328125023">
+      <DataClassMoniker Name="/RiotDataContext/Team" />
+      <nestedChildShapes>
+        <elementListCompartment Id="37e05674-02ed-4bf0-8580-a5f482b99c68" absoluteBounds="3.515, 18.835, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1e5e6181-440b-4c9d-b358-b1272f4f3d71" absoluteBounds="3.5, 8.25, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/RiotDataContext/Participant" />
+      <nestedChildShapes>
+        <elementListCompartment Id="342ee70f-7939-4012-b706-61706ba3e3da" absoluteBounds="3.515, 8.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6bbb46a0-c9b4-4e6f-a2b7-a5ffef3449ba" absoluteBounds="6.25, 4.5, 2, 13.116681315104163">
+      <DataClassMoniker Name="/RiotDataContext/ParticipantStat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="be7e2fb4-d6ce-4798-a34e-698bf088b289" absoluteBounds="6.265, 4.96, 1.9700000000000002, 12.556681315104166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f39a7890-479b-42f2-8c4d-822071af0693" absoluteBounds="6.25, 1.875, 2, 1.9631982421875003">
+      <DataClassMoniker Name="/RiotDataContext/Player" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5500e67b-3f8c-4b8e-b46f-e6e1a6f562df" absoluteBounds="6.265, 2.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 13.4920068359375); (1.75 : 20.2219555664063); (3.5 : 20.2219555664063)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RiotDataContext/Match/Match_Team" />
+      <nodes>
+        <classShapeMoniker Id="5ee6447c-55de-40d5-94d3-c4adb5954f63" />
+        <classShapeMoniker Id="b98d8e69-fa75-4acb-aaaf-4448504e5a74" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 10.7748527018229); (3.5 : 10.7748527018229)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RiotDataContext/Match/Match_Participant" />
+      <nodes>
+        <classShapeMoniker Id="5ee6447c-55de-40d5-94d3-c4adb5954f63" />
+        <classShapeMoniker Id="1e5e6181-440b-4c9d-b358-b1272f4f3d71" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 9.71235270182292); (6.25 : 9.71235270182292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RiotDataContext/Participant/Participant_ParticipantStat" />
+      <nodes>
+        <classShapeMoniker Id="1e5e6181-440b-4c9d-b358-b1272f4f3d71" />
+        <classShapeMoniker Id="6bbb46a0-c9b4-4e6f-a2b7-a5ffef3449ba" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 8.25); (4.5 : 2.85659912109375); (6.25 : 2.85659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RiotDataContext/Participant/Participant_Player" />
+      <nodes>
+        <classShapeMoniker Id="1e5e6181-440b-4c9d-b358-b1272f4f3d71" />
+        <classShapeMoniker Id="f39a7890-479b-42f2-8c4d-822071af0693" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

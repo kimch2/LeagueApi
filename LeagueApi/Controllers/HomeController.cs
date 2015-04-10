@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using LeagueApi.Helper;
@@ -9,7 +8,7 @@ namespace LeagueApi.Controllers
 {
     public class HomeController : Controller
     {
-        private MatchesViewModel CurrentModel
+        private MatchesViewModel CurrentMatchModel
         {
             get { return (MatchesViewModel) Session["MatchesVM"]; }
             set { Session["MatchesVM"] = value; }
@@ -42,31 +41,17 @@ namespace LeagueApi.Controllers
             model.CurrentMatchData = MatchService.CallService(model.Matches.First());
             model.CurrentMatchId = model.Matches.First();
 
-            CurrentModel = model;
+            CurrentMatchModel = model;
             return View(model);
         }
 
         [HttpPost]
         public ActionResult Index(int currentMatchId)
         {
-            var currentModel = CurrentModel;
+            var currentModel = CurrentMatchModel;
             currentModel.CurrentMatchData = MatchService.CallService(currentMatchId);
-            CurrentModel = currentModel;
+            CurrentMatchModel = currentModel;
             return View(currentModel);
-        }
-
-        public ActionResult Champions()
-        {
-            var model = new ChampionsViewModel
-            {
-                ChampionData = ChampionsService.CallService(),
-                Matches = ApiChallengeService.CallService(BucketTime).Take(9)
-            };
-
-            foreach (var match in model.Matches)
-                model.MatchData.Add(MatchService.CallService(match));
-
-            return View();
         }
     }
 }

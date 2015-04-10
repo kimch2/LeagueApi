@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RiotAPI_GameCollector
+namespace RiotServices
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -48,7 +48,7 @@ namespace RiotAPI_GameCollector
     #endregion
 		
 		public RiotDataContext() : 
-				base(global::RiotAPI_GameCollector.Properties.Settings.Default.RiotDataConnectionString, mappingSource)
+				base(global::RiotServices.Properties.Settings.Default.RiotDataConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

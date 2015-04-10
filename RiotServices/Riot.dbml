@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RiotData" Class="RiotDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\~Git\LeagueApi\LeagueApi\App_Data\RiotData.mdf;Integrated Security=True" SettingsObjectName="RiotAPI_GameCollector.Properties.Settings" SettingsPropertyName="RiotDataConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\~Git\LeagueApi\LeagueApi\App_Data\RiotData.mdf;Integrated Security=True" SettingsObjectName="RiotServices.Properties.Settings" SettingsPropertyName="RiotDataConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Match" Member="Matches">
     <Type Name="Match">
       <Column Name="MatchId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />

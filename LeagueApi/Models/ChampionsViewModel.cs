@@ -1,16 +1,24 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using LeagueApi.Controllers;
+using RiotServices;
 
 namespace LeagueApi.Models
 {
     public class ChampionsViewModel
     {
-        public ChampionsViewModel()
+        public Champions ChampionData { get; set; }
+        public List<Match> Matches { get; set; }
+        public List<ChampionResponse> AvailableChampions { get; set; }
+        public IEnumerable<SelectListItem> ChampionNames
         {
-            MatchData = new List<MatchResponse>();
+            get
+            {
+                return AvailableChampions.Select(x => new SelectListItem { Text = x.Name, Value = "" + x.Id });
+            }
         }
-
-        public ChampionsResponse ChampionData { get; set; }
-        public IEnumerable<int> Matches { get; set; }
-        public List<MatchResponse> MatchData { get; set; }
+        public int FirstChampionId { get; set; }
+        public int SecondChampionId { get; set; }
     }
 }

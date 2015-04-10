@@ -32,28 +32,28 @@
         <elementListCompartment Id="5500e67b-3f8c-4b8e-b46f-e6e1a6f562df" absoluteBounds="6.265, 2.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.75 : 13.4920068359375); (1.75 : 20.2219555664063); (3.5 : 20.2219555664063)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.75 : 13.4920068359375); (1.75 : 20.2219555664063); (3.5 : 20.2219555664063)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/RiotDataContext/Match/Match_Team" />
       <nodes>
         <classShapeMoniker Id="5ee6447c-55de-40d5-94d3-c4adb5954f63" />
         <classShapeMoniker Id="b98d8e69-fa75-4acb-aaaf-4448504e5a74" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 10.7748527018229); (3.5 : 10.7748527018229)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 10.7748527018229); (3.5 : 10.7748527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/RiotDataContext/Match/Match_Participant" />
       <nodes>
         <classShapeMoniker Id="5ee6447c-55de-40d5-94d3-c4adb5954f63" />
         <classShapeMoniker Id="1e5e6181-440b-4c9d-b358-b1272f4f3d71" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 9.71235270182292); (6.25 : 9.71235270182292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 9.71235270182292); (6.25 : 9.71235270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/RiotDataContext/Participant/Participant_ParticipantStat" />
       <nodes>
         <classShapeMoniker Id="1e5e6181-440b-4c9d-b358-b1272f4f3d71" />
         <classShapeMoniker Id="6bbb46a0-c9b4-4e6f-a2b7-a5ffef3449ba" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.5 : 8.25); (4.5 : 2.85659912109375); (6.25 : 2.85659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.5 : 8.25); (4.5 : 2.85659912109375); (6.25 : 2.85659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/RiotDataContext/Participant/Participant_Player" />
       <nodes>
         <classShapeMoniker Id="1e5e6181-440b-4c9d-b358-b1272f4f3d71" />

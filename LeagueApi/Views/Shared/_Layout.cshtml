@@ -7,6 +7,25 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <style type="text/css">
+        .seperator {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .fullWidth {
+            width: 100%;
+        }
+
+        .inline {
+            display: inline;
+        }
+
+        label {
+            margin-bottom: 0;
+        }
+    </style>
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -22,7 +41,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Game Viewer", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Champ Breakdown", "Champions", "Home")</li>
+                    <li>@Html.ActionLink("Champ Breakdown", "Index", "Champions")</li>
                 </ul>
             </div>
         </div>

@@ -93,106 +93,106 @@ namespace LeagueApi.Models
     public class Statistics
     {
         [JsonProperty("unrealKills")]
-        public int UnrealKills { get; set; }
+        public long UnrealKills { get; set; }
 
         [JsonProperty("item0")]
-        public int Item0 { get; set; }
+        public long Item0 { get; set; }
 
         [JsonProperty("item1")]
-        public int Item1 { get; set; }
+        public long Item1 { get; set; }
 
         [JsonProperty("item2")]
-        public int Item2 { get; set; }
+        public long Item2 { get; set; }
 
         [JsonProperty("totalDamageTaken")]
-        public int TotalDamageTaken { get; set; }
+        public long TotalDamageTaken { get; set; }
 
         [JsonProperty("pentaKills")]
-        public int PentaKills { get; set; }
+        public long PentaKills { get; set; }
 
         [JsonProperty("sightWardsBoughtInGame")]
-        public int SightWardsBoughtInGame { get; set; }
+        public long SightWardsBoughtInGame { get; set; }
 
         [JsonProperty("winner")]
         public bool Winner { get; set; }
 
         [JsonProperty("magicDamageDealt")]
-        public int MagicDamageDealt { get; set; }
+        public long MagicDamageDealt { get; set; }
 
         [JsonProperty("wardsKilled")]
-        public int WardsKilled { get; set; }
+        public long WardsKilled { get; set; }
 
         [JsonProperty("largestCriticalStrike")]
-        public int LargestCriticalStrike { get; set; }
+        public long LargestCriticalStrike { get; set; }
 
         [JsonProperty("trueDamageDealt")]
-        public int TrueDamageDealt { get; set; }
+        public long TrueDamageDealt { get; set; }
 
         [JsonProperty("doubleKills")]
-        public int DoubleKills { get; set; }
+        public long DoubleKills { get; set; }
 
         [JsonProperty("physicalDamageDealt")]
-        public int PhysicalDamageDealt { get; set; }
+        public long PhysicalDamageDealt { get; set; }
 
         [JsonProperty("tripleKills")]
-        public int TripleKills { get; set; }
+        public long TripleKills { get; set; }
 
         [JsonProperty("deaths")]
-        public int Deaths { get; set; }
+        public long Deaths { get; set; }
 
         [JsonProperty("firstBloodAssist")]
         public bool FirstBloodAssist { get; set; }
 
         [JsonProperty("magicDamageDealtToChampions")]
-        public int MagicDamageDealtToChampions { get; set; }
+        public long MagicDamageDealtToChampions { get; set; }
 
         [JsonProperty("assists")]
-        public int Assists { get; set; }
+        public long Assists { get; set; }
 
         [JsonProperty("visionWardsBoughtInGame")]
-        public int VisionWardsBoughtInGame { get; set; }
+        public long VisionWardsBoughtInGame { get; set; }
 
         [JsonProperty("totalTimeCrowdControlDealt")]
-        public int TotalTimeCrowdControlDealt { get; set; }
+        public long TotalTimeCrowdControlDealt { get; set; }
 
         [JsonProperty("champLevel")]
-        public int ChampLevel { get; set; }
+        public long ChampLevel { get; set; }
 
         [JsonProperty("physicalDamageTaken")]
-        public int PhysicalDamageTaken { get; set; }
+        public long PhysicalDamageTaken { get; set; }
 
         [JsonProperty("totalDamageDealt")]
-        public int TotalDamageDealt { get; set; }
+        public long TotalDamageDealt { get; set; }
 
         [JsonProperty("largestKillingSpree")]
-        public int LargestKillingSpree { get; set; }
+        public long LargestKillingSpree { get; set; }
 
         [JsonProperty("inhibitorKills")]
-        public int InhibitorKills { get; set; }
+        public long InhibitorKills { get; set; }
 
         [JsonProperty("minionsKilled")]
-        public int MinionsKilled { get; set; }
+        public long MinionsKilled { get; set; }
 
         [JsonProperty("towerKills")]
-        public int TowerKills { get; set; }
+        public long TowerKills { get; set; }
 
         [JsonProperty("physicalDamageDealtToChampions")]
-        public int PhysicalDamageDealtToChampions { get; set; }
+        public long PhysicalDamageDealtToChampions { get; set; }
 
         [JsonProperty("quadraKills")]
-        public int QuadraKills { get; set; }
+        public long QuadraKills { get; set; }
 
         [JsonProperty("goldSpent")]
-        public int GoldSpent { get; set; }
+        public long GoldSpent { get; set; }
 
         [JsonProperty("totalDamageDealtToChampions")]
-        public int TotalDamageDealtToChampions { get; set; }
+        public long TotalDamageDealtToChampions { get; set; }
 
         [JsonProperty("goldEarned")]
-        public int GoldEarned { get; set; }
+        public long GoldEarned { get; set; }
 
         [JsonProperty("neutralMinionsKilledTeamJungle")]
-        public int NeutralMinionsKilledTeamJungle { get; set; }
+        public long NeutralMinionsKilledTeamJungle { get; set; }
 
         [JsonProperty("firstBloodKill")]
         public bool FirstBloodKill { get; set; }
@@ -201,70 +201,70 @@ namespace LeagueApi.Models
         public bool FirstTowerKill { get; set; }
 
         [JsonProperty("wardsPlaced")]
-        public int WardsPlaced { get; set; }
+        public long WardsPlaced { get; set; }
 
         [JsonProperty("trueDamageDealtToChampions")]
-        public int TrueDamageDealtToChampions { get; set; }
+        public long TrueDamageDealtToChampions { get; set; }
 
         [JsonProperty("killingSprees")]
-        public int KillingSprees { get; set; }
+        public long KillingSprees { get; set; }
 
         [JsonProperty("firstInhibitorKill")]
         public bool FirstInhibitorKill { get; set; }
 
         [JsonProperty("totalScoreRank")]
-        public int TotalScoreRank { get; set; }
+        public long TotalScoreRank { get; set; }
 
         [JsonProperty("totalUnitsHealed")]
-        public int TotalUnitsHealed { get; set; }
+        public long TotalUnitsHealed { get; set; }
 
         [JsonProperty("kills")]
-        public int Kills { get; set; }
+        public long Kills { get; set; }
 
         [JsonProperty("firstInhibitorAssist")]
         public bool FirstInhibitorAssist { get; set; }
 
         [JsonProperty("totalPlayerScore")]
-        public int TotalPlayerScore { get; set; }
+        public long TotalPlayerScore { get; set; }
 
         [JsonProperty("neutralMinionsKilledEnemyJungle")]
-        public int NeutralMinionsKilledEnemyJungle { get; set; }
+        public long NeutralMinionsKilledEnemyJungle { get; set; }
 
         [JsonProperty("magicDamageTaken")]
-        public int MagicDamageTaken { get; set; }
+        public long MagicDamageTaken { get; set; }
 
         [JsonProperty("largestMultiKill")]
-        public int LargestMultiKill { get; set; }
+        public long LargestMultiKill { get; set; }
 
         [JsonProperty("totalHeal")]
-        public int TotalHeal { get; set; }
+        public long TotalHeal { get; set; }
 
         [JsonProperty("item4")]
-        public int Item4 { get; set; }
+        public long Item4 { get; set; }
 
         [JsonProperty("item3")]
-        public int Item3 { get; set; }
+        public long Item3 { get; set; }
 
         [JsonProperty("objectivePlayerScore")]
-        public int ObjectivePlayerScore { get; set; }
+        public long ObjectivePlayerScore { get; set; }
 
         [JsonProperty("item6")]
-        public int Item6 { get; set; }
+        public long Item6 { get; set; }
 
         [JsonProperty("firstTowerAssist")]
         public bool FirstTowerAssist { get; set; }
 
         [JsonProperty("item5")]
-        public int Item5 { get; set; }
+        public long Item5 { get; set; }
 
         [JsonProperty("trueDamageTaken")]
-        public int TrueDamageTaken { get; set; }
+        public long TrueDamageTaken { get; set; }
 
         [JsonProperty("neutralMinionsKilled")]
-        public int NeutralMinionsKilled { get; set; }
+        public long NeutralMinionsKilled { get; set; }
 
         [JsonProperty("combatPlayerScore")]
-        public int CombatPlayerScore { get; set; }
+        public long CombatPlayerScore { get; set; }
     }
 
     public class Rune

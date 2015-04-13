@@ -1,24 +1,22 @@
 ﻿@{
+    if (!String.IsNullOrEmpty(ViewBag.Error))
+    {
+        Response.Write(ViewBag.Error);
+        Response.End();
+    }
+
     ViewBag.Title = "League API";
     var matchCreation = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(Model.CurrentMatchData.MatchCreation);
-    var bucketDateTimeString = String.Format("{0} GMT", Model.BucketDateTime);
+    var matchLengthMinutes = Math.Floor((decimal) Model.CurrentMatchData.MatchDuration/60);
+    var matchLengthSeconds = ((int)((((double)Model.CurrentMatchData.MatchDuration%60)/100)*60)).ToString("D2");
+    var matchLength = String.Format("{0}:{1}", matchLengthMinutes, matchLengthSeconds);
 }
 @model LeagueApi.Models.MatchesViewModel
-<style type="text/css">
-    .seperator { padding-top: 10px; padding-bottom: 10px; }
-    .fullWidth { width: 100%;}
-    .inline { display: inline; }
-    label { margin-bottom: 0;}
-</style>
 
 <div class="seperator"></div>
 
 <div class="row">
     <div class="col-md-10">
-        <div class="seperator">
-            @Html.Label("Bucket")<br/>
-            <span>@bucketDateTimeString</span>
-        </div>
         <table class="fullWidth">
             <thead>
             <tr>
@@ -36,7 +34,7 @@
                     }
                 </td>
                 <td>@matchCreation</td>
-                <td>@Html.DisplayFor(m => m.CurrentMatchData.MatchDuration)</td>
+                <td>@matchLength</td>
             </tr>
             </tbody>
         </table>

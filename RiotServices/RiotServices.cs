@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using LeagueApi.Models;
 using Newtonsoft.Json;
@@ -62,8 +63,17 @@ namespace RiotServices
             }
             
             LastCallTime = DateTime.Now;
-            using (var client = new WebClient())
-                return client.DownloadString(String.Format("{0}&{1}",address, RiotApiSettings.ApiKeyQuery));
+            try
+            {
+                using (var client = new WebClient())
+                    return client.DownloadString(String.Format("{0}&{1}", address, RiotApiSettings.ApiKeyQuery));
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return "";
+            }
+            
         }
     }
 }

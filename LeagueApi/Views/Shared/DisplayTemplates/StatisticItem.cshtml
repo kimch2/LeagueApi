@@ -1,0 +1,7 @@
+﻿@using LeagueApi.Controllers
+@model StatisticItem
+
+<tr>
+    <td>@Html.Label(Model.Name)</td>
+    @Html.DisplayFor(m => m.Values, "StatisticValues")
+</tr>

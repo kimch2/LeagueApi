@@ -8,7 +8,7 @@ namespace LeagueApi.Models
 {
     public class ChampionsViewModel
     {
-        public Champions ChampionData { get; set; }
+        public TotalsStatistics ChampionData { get; set; }
         public List<Match> Matches { get; set; }
         public List<ChampionResponse> AvailableChampions { get; set; }
         public IEnumerable<SelectListItem> ChampionNames

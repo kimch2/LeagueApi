@@ -9,7 +9,7 @@ namespace LeagueApi.Models
     public class MatchesViewModel
     {
         [Display(Name = "Current Match")]
-        public int CurrentMatchId { get; set; }
+        public long CurrentMatchId { get; set; }
 
         public IEnumerable<SelectListItem> MatchItems
         {
@@ -17,7 +17,7 @@ namespace LeagueApi.Models
         }
 
         public MatchResponse CurrentMatchData { get; set; }
-        public List<int> Matches { get; set; }
+        public List<long> Matches { get; set; }
         public ChampionsResponse ChampionData { get; set; }
 
         public PlayerList Team1 { get { return new PlayerList(CurrentMatchData.Participants.Where(p => p.TeamId == 100)); } }

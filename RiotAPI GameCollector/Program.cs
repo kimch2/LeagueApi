@@ -13,12 +13,17 @@ namespace RiotAPI_GameCollector
 
         static void Main(string[] args)
         {
-            var runTimes = 5;
+            var runTimes = 100;
 
             while (runTimes >= 0) { 
-                MatchIds = RiotService.ApiChallenge(BucketTime);
-                AddMatchIds();
-                UpdateMatches(RiotService);
+                Console.WriteLine("Runs remaining " + runTimes);
+                var bucketTime = BucketTime;
+                MatchIds = RiotService.ApiChallenge(bucketTime);
+                if (MatchIds != null && MatchIds.Count > 0)
+                {
+                    AddMatchIds(bucketTime);
+                    UpdateMatches(RiotService);
+                }
                 runTimes--;
             }
         }
@@ -28,6 +33,7 @@ namespace RiotAPI_GameCollector
             using (var riotDb = new RiotDataContext())
             {
                 var matches = riotDb.Matches.Where(m => m.MapId == null);
+                Console.WriteLine("Updating {0} matches.", matches.Count());
 
                 foreach (var match in matches)
                 {
@@ -49,13 +55,13 @@ namespace RiotAPI_GameCollector
             }
         }
 
-       private static void AddMatchIds()
+       private static void AddMatchIds(int bucketTime)
         {
             using (var riotDb = new RiotDataContext())
             {
                 foreach (var matchId in MatchIds)
                     if (!riotDb.Matches.Any(m => m.MatchId == matchId))
-                        riotDb.Matches.InsertOnSubmit(new Match {MatchId = matchId});
+                        riotDb.Matches.InsertOnSubmit(new Match {BucketTime = bucketTime, MatchId = matchId});
 
                 riotDb.SubmitChanges();
             }
@@ -67,7 +73,7 @@ namespace RiotAPI_GameCollector
             get
             {
                 var now = DateTime.UtcNow;
-                return now.AddHours(-1).AddMinutes(-now.Minute - (_offset -= 5)).AddSeconds(-now.Second);
+                return now.AddHours(-24).AddMinutes(-now.Minute - (_offset -= 5)).AddSeconds(-now.Second);
                 
             }
         }

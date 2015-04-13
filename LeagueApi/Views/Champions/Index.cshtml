@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "League API";
+}
+@model LeagueApi.Models.ChampionsViewModel
+@using (Html.BeginForm("Index", "Champions", FormMethod.Post))
+{
+    <style>
+        .championContainer {
+            border-style: solid; 
+            padding: 5px;
+            display: inline-block;
+            width: 100%;
+        }
+        .championContainer>div:nth-child(odd) {
+            float: left;
+        }
+        .statBlock {
+            width: 49%;
+            overflow: hidden;
+        }
+    </style>
+    <div class="seperator"></div>
+
+    <div class="championContainer">
+        <table style="width: 100%;">
+            <thead>
+            <tr>
+                <td></td>
+                <td>@Html.DropDownListFor(m => m.FirstChampionId, Model.ChampionNames, new {onchange = "this.form.submit();"})</td>
+                <td>@Html.DropDownListFor(m => m.SecondChampionId, Model.ChampionNames, new {onchange = "this.form.submit();"})</td>
+            </tr>
+            </thead>
+            <tbody>
+                @Html.DisplayFor(m => m.ChampionData)
+            </tbody>
+        </table>
+    </div>
+}

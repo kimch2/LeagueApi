@@ -26,7 +26,7 @@ namespace LeagueApi.Helper
 
     public class MatchService : RiotService
     {
-        public static MatchResponse CallService(int matchId)
+        public static MatchResponse CallService(long matchId)
         {
             BaseAddress = "https://na.api.pvp.net/api/lol/na/v2.2/match/";
             var address = String.Format("{0}{1}?{2}", BaseAddress, matchId, RiotApiSettings.ApiKeyQuery);

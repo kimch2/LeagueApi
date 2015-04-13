@@ -1,23 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RiotData" Class="RiotDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\~Git\LeagueApi\LeagueApi\App_Data\RiotData.mdf;Integrated Security=True" SettingsObjectName="RiotServices.Properties.Settings" SettingsPropertyName="RiotDataConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Match" Member="Matches">
-    <Type Name="Match">
-      <Column Name="MatchId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MapId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MatchCreation" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="MatchDuration" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="MatchMode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="MatchType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="MatchVersion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ParticipantIdentities" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PlatformId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="QueueType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Region" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Season" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="Match_Team" Member="Teams" ThisKey="MatchId" OtherKey="MatchId" Type="Team" />
-      <Association Name="Match_Participant" Member="Participants" ThisKey="MatchId" OtherKey="MatchId" Type="Participant" />
-    </Type>
-  </Table>
   <Table Name="dbo.Team" Member="Teams">
     <Type Name="Team">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -134,6 +116,25 @@
       <Column Name="SummonerName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="ParticipantId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Participant_Player" Member="Participant" ThisKey="Id" OtherKey="Id" Type="Participant" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Match" Member="Matches">
+    <Type Name="Match">
+      <Column Name="BucketTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MatchId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MapId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MatchCreation" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MatchDuration" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MatchMode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MatchType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MatchVersion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ParticipantIdentities" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PlatformId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="QueueType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Region" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Season" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Match_Team" Member="Teams" ThisKey="MatchId" OtherKey="MatchId" Type="Team" />
+      <Association Name="Match_Participant" Member="Participants" ThisKey="MatchId" OtherKey="MatchId" Type="Participant" />
     </Type>
   </Table>
 </Database>

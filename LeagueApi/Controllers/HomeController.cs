@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using LeagueApi.Helper;
 using LeagueApi.Models;
+using RiotServices;
 
 namespace LeagueApi.Controllers
 {
@@ -13,37 +15,28 @@ namespace LeagueApi.Controllers
             get { return (MatchesViewModel) Session["MatchesVM"]; }
             set { Session["MatchesVM"] = value; }
         }
-
-        private static DateTime BucketDateTime
-        {
-            get
-            {
-                var now = DateTime.UtcNow;
-                return now.AddHours(-1).AddMinutes(-now.Minute).AddSeconds(-now.Second);
-            }
-        }
-
-        private static int BucketTime
-        {
-            get
-            {
-                return Convert.ToInt32(Math.Floor((BucketDateTime - new DateTime(1970, 1, 1)).TotalSeconds));
-            }
-        }
         
         [HttpGet]
         public ActionResult Index()
         {
-            var model = new MatchesViewModel();
-            model.ChampionData = ChampionsService.CallService();
-            model.BucketDateTime = BucketDateTime;
-            model.Matches = ApiChallengeService.CallService(BucketTime);
-            model.CurrentMatchData = MatchService.CallService(model.Matches.First());
-            model.CurrentMatchId = model.Matches.First();
-
-            CurrentMatchModel = model;
-            return View(model);
+            //try
+            //{
+                var model = new MatchesViewModel();
+                model.ChampionData = ChampionsService.CallService();
+                using (var riotDb = new RiotDataContext())
+                    model.Matches = riotDb.Matches.Select(x => x.MatchId).ToList();
+                model.CurrentMatchData = MatchService.CallService(model.Matches.First());
+                model.CurrentMatchId = model.Matches.First();
+                CurrentMatchModel = model;
+                return View(model);
+            //}
+            //catch (Exception)
+            //{
+            //    return View("Error");
+            //}
         }
+
+        public List<int> Matches { get; set; }
 
         [HttpPost]
         public ActionResult Index(int currentMatchId)

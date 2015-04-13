@@ -30,9 +30,6 @@ namespace RiotServices
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertMatch(Match instance);
-    partial void UpdateMatch(Match instance);
-    partial void DeleteMatch(Match instance);
     partial void InsertTeam(Team instance);
     partial void UpdateTeam(Team instance);
     partial void DeleteTeam(Team instance);
@@ -45,6 +42,9 @@ namespace RiotServices
     partial void InsertPlayer(Player instance);
     partial void UpdatePlayer(Player instance);
     partial void DeletePlayer(Player instance);
+    partial void InsertMatch(Match instance);
+    partial void UpdateMatch(Match instance);
+    partial void DeleteMatch(Match instance);
     #endregion
 		
 		public RiotDataContext() : 
@@ -75,14 +75,6 @@ namespace RiotServices
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<Match> Matches
-		{
-			get
-			{
-				return this.GetTable<Match>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Team> Teams
@@ -116,387 +108,13 @@ namespace RiotServices
 				return this.GetTable<Player>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Match")]
-	public partial class Match : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _MatchId;
-		
-		private System.Nullable<int> _MapId;
-		
-		private System.Nullable<long> _MatchCreation;
-		
-		private System.Nullable<long> _MatchDuration;
-		
-		private string _MatchMode;
-		
-		private string _MatchType;
-		
-		private string _MatchVersion;
-		
-		private string _ParticipantIdentities;
-		
-		private string _PlatformId;
-		
-		private string _QueueType;
-		
-		private string _Region;
-		
-		private string _Season;
-		
-		private EntitySet<Team> _Teams;
-		
-		private EntitySet<Participant> _Participants;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMatchIdChanging(long value);
-    partial void OnMatchIdChanged();
-    partial void OnMapIdChanging(System.Nullable<int> value);
-    partial void OnMapIdChanged();
-    partial void OnMatchCreationChanging(System.Nullable<long> value);
-    partial void OnMatchCreationChanged();
-    partial void OnMatchDurationChanging(System.Nullable<long> value);
-    partial void OnMatchDurationChanged();
-    partial void OnMatchModeChanging(string value);
-    partial void OnMatchModeChanged();
-    partial void OnMatchTypeChanging(string value);
-    partial void OnMatchTypeChanged();
-    partial void OnMatchVersionChanging(string value);
-    partial void OnMatchVersionChanged();
-    partial void OnParticipantIdentitiesChanging(string value);
-    partial void OnParticipantIdentitiesChanged();
-    partial void OnPlatformIdChanging(string value);
-    partial void OnPlatformIdChanged();
-    partial void OnQueueTypeChanging(string value);
-    partial void OnQueueTypeChanged();
-    partial void OnRegionChanging(string value);
-    partial void OnRegionChanged();
-    partial void OnSeasonChanging(string value);
-    partial void OnSeasonChanged();
-    #endregion
-		
-		public Match()
-		{
-			this._Teams = new EntitySet<Team>(new Action<Team>(this.attach_Teams), new Action<Team>(this.detach_Teams));
-			this._Participants = new EntitySet<Participant>(new Action<Participant>(this.attach_Participants), new Action<Participant>(this.detach_Participants));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchId", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
-		public long MatchId
+		public System.Data.Linq.Table<Match> Matches
 		{
 			get
 			{
-				return this._MatchId;
+				return this.GetTable<Match>();
 			}
-			set
-			{
-				if ((this._MatchId != value))
-				{
-					this.OnMatchIdChanging(value);
-					this.SendPropertyChanging();
-					this._MatchId = value;
-					this.SendPropertyChanged("MatchId");
-					this.OnMatchIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MapId", DbType="Int")]
-		public System.Nullable<int> MapId
-		{
-			get
-			{
-				return this._MapId;
-			}
-			set
-			{
-				if ((this._MapId != value))
-				{
-					this.OnMapIdChanging(value);
-					this.SendPropertyChanging();
-					this._MapId = value;
-					this.SendPropertyChanged("MapId");
-					this.OnMapIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchCreation", DbType="BigInt")]
-		public System.Nullable<long> MatchCreation
-		{
-			get
-			{
-				return this._MatchCreation;
-			}
-			set
-			{
-				if ((this._MatchCreation != value))
-				{
-					this.OnMatchCreationChanging(value);
-					this.SendPropertyChanging();
-					this._MatchCreation = value;
-					this.SendPropertyChanged("MatchCreation");
-					this.OnMatchCreationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchDuration", DbType="BigInt")]
-		public System.Nullable<long> MatchDuration
-		{
-			get
-			{
-				return this._MatchDuration;
-			}
-			set
-			{
-				if ((this._MatchDuration != value))
-				{
-					this.OnMatchDurationChanging(value);
-					this.SendPropertyChanging();
-					this._MatchDuration = value;
-					this.SendPropertyChanged("MatchDuration");
-					this.OnMatchDurationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchMode", DbType="VarChar(50)")]
-		public string MatchMode
-		{
-			get
-			{
-				return this._MatchMode;
-			}
-			set
-			{
-				if ((this._MatchMode != value))
-				{
-					this.OnMatchModeChanging(value);
-					this.SendPropertyChanging();
-					this._MatchMode = value;
-					this.SendPropertyChanged("MatchMode");
-					this.OnMatchModeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchType", DbType="VarChar(50)")]
-		public string MatchType
-		{
-			get
-			{
-				return this._MatchType;
-			}
-			set
-			{
-				if ((this._MatchType != value))
-				{
-					this.OnMatchTypeChanging(value);
-					this.SendPropertyChanging();
-					this._MatchType = value;
-					this.SendPropertyChanged("MatchType");
-					this.OnMatchTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchVersion", DbType="VarChar(50)")]
-		public string MatchVersion
-		{
-			get
-			{
-				return this._MatchVersion;
-			}
-			set
-			{
-				if ((this._MatchVersion != value))
-				{
-					this.OnMatchVersionChanging(value);
-					this.SendPropertyChanging();
-					this._MatchVersion = value;
-					this.SendPropertyChanged("MatchVersion");
-					this.OnMatchVersionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParticipantIdentities", DbType="VarChar(50)")]
-		public string ParticipantIdentities
-		{
-			get
-			{
-				return this._ParticipantIdentities;
-			}
-			set
-			{
-				if ((this._ParticipantIdentities != value))
-				{
-					this.OnParticipantIdentitiesChanging(value);
-					this.SendPropertyChanging();
-					this._ParticipantIdentities = value;
-					this.SendPropertyChanged("ParticipantIdentities");
-					this.OnParticipantIdentitiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlatformId", DbType="VarChar(50)")]
-		public string PlatformId
-		{
-			get
-			{
-				return this._PlatformId;
-			}
-			set
-			{
-				if ((this._PlatformId != value))
-				{
-					this.OnPlatformIdChanging(value);
-					this.SendPropertyChanging();
-					this._PlatformId = value;
-					this.SendPropertyChanged("PlatformId");
-					this.OnPlatformIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QueueType", DbType="VarChar(50)")]
-		public string QueueType
-		{
-			get
-			{
-				return this._QueueType;
-			}
-			set
-			{
-				if ((this._QueueType != value))
-				{
-					this.OnQueueTypeChanging(value);
-					this.SendPropertyChanging();
-					this._QueueType = value;
-					this.SendPropertyChanged("QueueType");
-					this.OnQueueTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Region", DbType="VarChar(50)")]
-		public string Region
-		{
-			get
-			{
-				return this._Region;
-			}
-			set
-			{
-				if ((this._Region != value))
-				{
-					this.OnRegionChanging(value);
-					this.SendPropertyChanging();
-					this._Region = value;
-					this.SendPropertyChanged("Region");
-					this.OnRegionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Season", DbType="VarChar(50)")]
-		public string Season
-		{
-			get
-			{
-				return this._Season;
-			}
-			set
-			{
-				if ((this._Season != value))
-				{
-					this.OnSeasonChanging(value);
-					this.SendPropertyChanging();
-					this._Season = value;
-					this.SendPropertyChanged("Season");
-					this.OnSeasonChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Match_Team", Storage="_Teams", ThisKey="MatchId", OtherKey="MatchId")]
-		public EntitySet<Team> Teams
-		{
-			get
-			{
-				return this._Teams;
-			}
-			set
-			{
-				this._Teams.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Match_Participant", Storage="_Participants", ThisKey="MatchId", OtherKey="MatchId")]
-		public EntitySet<Participant> Participants
-		{
-			get
-			{
-				return this._Participants;
-			}
-			set
-			{
-				this._Participants.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Teams(Team entity)
-		{
-			this.SendPropertyChanging();
-			entity.Match = this;
-		}
-		
-		private void detach_Teams(Team entity)
-		{
-			this.SendPropertyChanging();
-			entity.Match = null;
-		}
-		
-		private void attach_Participants(Participant entity)
-		{
-			this.SendPropertyChanging();
-			entity.Match = this;
-		}
-		
-		private void detach_Participants(Participant entity)
-		{
-			this.SendPropertyChanging();
-			entity.Match = null;
 		}
 	}
 	
@@ -3181,6 +2799,412 @@ namespace RiotServices
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Match")]
+	public partial class Match : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Nullable<int> _BucketTime;
+		
+		private long _MatchId;
+		
+		private System.Nullable<int> _MapId;
+		
+		private System.Nullable<long> _MatchCreation;
+		
+		private System.Nullable<long> _MatchDuration;
+		
+		private string _MatchMode;
+		
+		private string _MatchType;
+		
+		private string _MatchVersion;
+		
+		private string _ParticipantIdentities;
+		
+		private string _PlatformId;
+		
+		private string _QueueType;
+		
+		private string _Region;
+		
+		private string _Season;
+		
+		private EntitySet<Team> _Teams;
+		
+		private EntitySet<Participant> _Participants;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnBucketTimeChanging(System.Nullable<int> value);
+    partial void OnBucketTimeChanged();
+    partial void OnMatchIdChanging(long value);
+    partial void OnMatchIdChanged();
+    partial void OnMapIdChanging(System.Nullable<int> value);
+    partial void OnMapIdChanged();
+    partial void OnMatchCreationChanging(System.Nullable<long> value);
+    partial void OnMatchCreationChanged();
+    partial void OnMatchDurationChanging(System.Nullable<long> value);
+    partial void OnMatchDurationChanged();
+    partial void OnMatchModeChanging(string value);
+    partial void OnMatchModeChanged();
+    partial void OnMatchTypeChanging(string value);
+    partial void OnMatchTypeChanged();
+    partial void OnMatchVersionChanging(string value);
+    partial void OnMatchVersionChanged();
+    partial void OnParticipantIdentitiesChanging(string value);
+    partial void OnParticipantIdentitiesChanged();
+    partial void OnPlatformIdChanging(string value);
+    partial void OnPlatformIdChanged();
+    partial void OnQueueTypeChanging(string value);
+    partial void OnQueueTypeChanged();
+    partial void OnRegionChanging(string value);
+    partial void OnRegionChanged();
+    partial void OnSeasonChanging(string value);
+    partial void OnSeasonChanged();
+    #endregion
+		
+		public Match()
+		{
+			this._Teams = new EntitySet<Team>(new Action<Team>(this.attach_Teams), new Action<Team>(this.detach_Teams));
+			this._Participants = new EntitySet<Participant>(new Action<Participant>(this.attach_Participants), new Action<Participant>(this.detach_Participants));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BucketTime", DbType="Int")]
+		public System.Nullable<int> BucketTime
+		{
+			get
+			{
+				return this._BucketTime;
+			}
+			set
+			{
+				if ((this._BucketTime != value))
+				{
+					this.OnBucketTimeChanging(value);
+					this.SendPropertyChanging();
+					this._BucketTime = value;
+					this.SendPropertyChanged("BucketTime");
+					this.OnBucketTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchId", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long MatchId
+		{
+			get
+			{
+				return this._MatchId;
+			}
+			set
+			{
+				if ((this._MatchId != value))
+				{
+					this.OnMatchIdChanging(value);
+					this.SendPropertyChanging();
+					this._MatchId = value;
+					this.SendPropertyChanged("MatchId");
+					this.OnMatchIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MapId", DbType="Int")]
+		public System.Nullable<int> MapId
+		{
+			get
+			{
+				return this._MapId;
+			}
+			set
+			{
+				if ((this._MapId != value))
+				{
+					this.OnMapIdChanging(value);
+					this.SendPropertyChanging();
+					this._MapId = value;
+					this.SendPropertyChanged("MapId");
+					this.OnMapIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchCreation", DbType="BigInt")]
+		public System.Nullable<long> MatchCreation
+		{
+			get
+			{
+				return this._MatchCreation;
+			}
+			set
+			{
+				if ((this._MatchCreation != value))
+				{
+					this.OnMatchCreationChanging(value);
+					this.SendPropertyChanging();
+					this._MatchCreation = value;
+					this.SendPropertyChanged("MatchCreation");
+					this.OnMatchCreationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchDuration", DbType="BigInt")]
+		public System.Nullable<long> MatchDuration
+		{
+			get
+			{
+				return this._MatchDuration;
+			}
+			set
+			{
+				if ((this._MatchDuration != value))
+				{
+					this.OnMatchDurationChanging(value);
+					this.SendPropertyChanging();
+					this._MatchDuration = value;
+					this.SendPropertyChanged("MatchDuration");
+					this.OnMatchDurationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchMode", DbType="VarChar(50)")]
+		public string MatchMode
+		{
+			get
+			{
+				return this._MatchMode;
+			}
+			set
+			{
+				if ((this._MatchMode != value))
+				{
+					this.OnMatchModeChanging(value);
+					this.SendPropertyChanging();
+					this._MatchMode = value;
+					this.SendPropertyChanged("MatchMode");
+					this.OnMatchModeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchType", DbType="VarChar(50)")]
+		public string MatchType
+		{
+			get
+			{
+				return this._MatchType;
+			}
+			set
+			{
+				if ((this._MatchType != value))
+				{
+					this.OnMatchTypeChanging(value);
+					this.SendPropertyChanging();
+					this._MatchType = value;
+					this.SendPropertyChanged("MatchType");
+					this.OnMatchTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchVersion", DbType="VarChar(50)")]
+		public string MatchVersion
+		{
+			get
+			{
+				return this._MatchVersion;
+			}
+			set
+			{
+				if ((this._MatchVersion != value))
+				{
+					this.OnMatchVersionChanging(value);
+					this.SendPropertyChanging();
+					this._MatchVersion = value;
+					this.SendPropertyChanged("MatchVersion");
+					this.OnMatchVersionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParticipantIdentities", DbType="VarChar(50)")]
+		public string ParticipantIdentities
+		{
+			get
+			{
+				return this._ParticipantIdentities;
+			}
+			set
+			{
+				if ((this._ParticipantIdentities != value))
+				{
+					this.OnParticipantIdentitiesChanging(value);
+					this.SendPropertyChanging();
+					this._ParticipantIdentities = value;
+					this.SendPropertyChanged("ParticipantIdentities");
+					this.OnParticipantIdentitiesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlatformId", DbType="VarChar(50)")]
+		public string PlatformId
+		{
+			get
+			{
+				return this._PlatformId;
+			}
+			set
+			{
+				if ((this._PlatformId != value))
+				{
+					this.OnPlatformIdChanging(value);
+					this.SendPropertyChanging();
+					this._PlatformId = value;
+					this.SendPropertyChanged("PlatformId");
+					this.OnPlatformIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QueueType", DbType="VarChar(50)")]
+		public string QueueType
+		{
+			get
+			{
+				return this._QueueType;
+			}
+			set
+			{
+				if ((this._QueueType != value))
+				{
+					this.OnQueueTypeChanging(value);
+					this.SendPropertyChanging();
+					this._QueueType = value;
+					this.SendPropertyChanged("QueueType");
+					this.OnQueueTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Region", DbType="VarChar(50)")]
+		public string Region
+		{
+			get
+			{
+				return this._Region;
+			}
+			set
+			{
+				if ((this._Region != value))
+				{
+					this.OnRegionChanging(value);
+					this.SendPropertyChanging();
+					this._Region = value;
+					this.SendPropertyChanged("Region");
+					this.OnRegionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Season", DbType="VarChar(50)")]
+		public string Season
+		{
+			get
+			{
+				return this._Season;
+			}
+			set
+			{
+				if ((this._Season != value))
+				{
+					this.OnSeasonChanging(value);
+					this.SendPropertyChanging();
+					this._Season = value;
+					this.SendPropertyChanged("Season");
+					this.OnSeasonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Match_Team", Storage="_Teams", ThisKey="MatchId", OtherKey="MatchId")]
+		public EntitySet<Team> Teams
+		{
+			get
+			{
+				return this._Teams;
+			}
+			set
+			{
+				this._Teams.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Match_Participant", Storage="_Participants", ThisKey="MatchId", OtherKey="MatchId")]
+		public EntitySet<Participant> Participants
+		{
+			get
+			{
+				return this._Participants;
+			}
+			set
+			{
+				this._Participants.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Teams(Team entity)
+		{
+			this.SendPropertyChanging();
+			entity.Match = this;
+		}
+		
+		private void detach_Teams(Team entity)
+		{
+			this.SendPropertyChanging();
+			entity.Match = null;
+		}
+		
+		private void attach_Participants(Participant entity)
+		{
+			this.SendPropertyChanging();
+			entity.Match = this;
+		}
+		
+		private void detach_Participants(Participant entity)
+		{
+			this.SendPropertyChanging();
+			entity.Match = null;
 		}
 	}
 }

@@ -221,7 +221,10 @@
     <Content Include="Views\Champions\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\TotalsStatistics.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\StatisticItem.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\Champions.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\StatisticValues.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\DisplayTemplates\StatisticsGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RiotServices\RiotServices.csproj">

@@ -26,11 +26,11 @@ namespace RiotServices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\~Git\\LeagueApi\\LeagueApi\\App_Data" +
-            "\\RiotData.mdf;Integrated Security=True")]
-        public string RiotDataConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=RiotAPI.mssql.somee.com;Initial Catalog=RiotAPI;Persist Security Info" +
+            "=True;User ID=tucker87_SQLLogin_1;Password=x7czukja4e")]
+        public string RiotAPIConnectionString {
             get {
-                return ((string)(this["RiotDataConnectionString"]));
+                return ((string)(this["RiotAPIConnectionString"]));
             }
         }
     }

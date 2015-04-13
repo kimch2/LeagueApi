@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using LeagueApi.Models;
 using Newtonsoft.Json;
@@ -10,7 +11,13 @@ namespace RiotServices
     public class RiotApiSettings
     {
         public static string ApiKeyQuery { get { return "api_key=" + ApiKey; } }
-        private const string ApiKey = "67337c4e-a275-45ab-a6f5-ea809254bb4c";
+        private static readonly string ApiKey = GetApiKey();
+
+        private static string GetApiKey()
+        {
+            using (var riotDb = new RiotDataContext())
+                return riotDb.ApiKeys.First().ApiKey1;
+        }
     }
 
     public class RiotService

@@ -137,4 +137,10 @@
       <Association Name="Participant_Player" Member="Participant" ThisKey="Id" OtherKey="Id" Type="Participant" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ApiKey" Member="ApiKeys">
+    <Type Name="ApiKey">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ApiKey" Member="ApiKey1" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>

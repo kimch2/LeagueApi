@@ -45,6 +45,9 @@ namespace RiotServices
     partial void InsertPlayer(Player instance);
     partial void UpdatePlayer(Player instance);
     partial void DeletePlayer(Player instance);
+    partial void InsertApiKey(ApiKey instance);
+    partial void UpdateApiKey(ApiKey instance);
+    partial void DeleteApiKey(ApiKey instance);
     #endregion
 		
 		public RiotDataContext() : 
@@ -114,6 +117,14 @@ namespace RiotServices
 			get
 			{
 				return this.GetTable<Player>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ApiKey> ApiKeys
+		{
+			get
+			{
+				return this.GetTable<ApiKey>();
 			}
 		}
 	}
@@ -3183,6 +3194,92 @@ namespace RiotServices
 						this._Id = default(int);
 					}
 					this.SendPropertyChanged("Participant");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ApiKey")]
+	public partial class ApiKey : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _ApiKey1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnApiKey1Changing(string value);
+    partial void OnApiKey1Changed();
+    #endregion
+		
+		public ApiKey()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="ApiKey", Storage="_ApiKey1", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string ApiKey1
+		{
+			get
+			{
+				return this._ApiKey1;
+			}
+			set
+			{
+				if ((this._ApiKey1 != value))
+				{
+					this.OnApiKey1Changing(value);
+					this.SendPropertyChanging();
+					this._ApiKey1 = value;
+					this.SendPropertyChanged("ApiKey1");
+					this.OnApiKey1Changed();
 				}
 			}
 		}

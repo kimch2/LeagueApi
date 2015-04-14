@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
-using LeagueApi.Models;
 using Newtonsoft.Json;
 
 namespace RiotServices

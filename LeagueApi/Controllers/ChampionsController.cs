@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using LeagueApi.Helper;
 using LeagueApi.Models;
 using RiotServices;
+using Participant = RiotServices.Participant;
 
 namespace LeagueApi.Controllers
 {

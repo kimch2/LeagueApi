@@ -1,11 +1,11 @@
-﻿using LeagueApi.Models;
-using RiotServices;
+﻿using RiotServices;
+using Participant = RiotServices.Participant;
 
 namespace RiotAPI_GameCollector.Mappers
 {
     class ParticipantMapper
     {
-        public static Participant MapParticipant(MatchResponse matchData, LeagueApi.Models.Player participant, ParticipantStat stats)
+        public static Participant MapParticipant(MatchResponse matchData, ParticipantResponse participant, ParticipantStat stats, Player player)
         {
             return new Participant
             {
@@ -16,7 +16,8 @@ namespace RiotAPI_GameCollector.Mappers
                 ParticipantStat = stats,
                 Spell1Id = participant.Spell1Id,
                 Spell2Id = participant.Spell2Id,
-                TeamId = participant.TeamId
+                TeamId = participant.TeamId,
+                Player = player
             };
         }
     }

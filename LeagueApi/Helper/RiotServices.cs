@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using LeagueApi.Models;
 using Newtonsoft.Json;
+using RiotServices;
 
 namespace LeagueApi.Helper
 {

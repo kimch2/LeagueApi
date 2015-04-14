@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace LeagueApi.Models
+namespace RiotServices
 {
     public class MatchResponse
     {
@@ -15,7 +15,7 @@ namespace LeagueApi.Models
         public long MatchCreation { get; set; }
 
         [JsonProperty("participants")]
-        public List<Player> Participants { get; set; }
+        public List<ParticipantResponse> Participants { get; set; }
 
         [JsonProperty("platformId")]
         public string PlatformId { get; set; }
@@ -30,7 +30,7 @@ namespace LeagueApi.Models
         public string MatchVersion { get; set; }
 
         [JsonProperty("teams")]
-        public List<Team> Teams { get; set; }
+        public List<TeamResponse> Teams { get; set; }
 
         [JsonProperty("mapId")]
         public int MapId { get; set; }
@@ -48,7 +48,7 @@ namespace LeagueApi.Models
         public int MatchDuration { get; set; }
     }
 
-    public class Player
+    public class ParticipantResponse
     {
         [JsonProperty("masteries")]
         public List<Mastery> Masteries { get; set; }
@@ -58,8 +58,7 @@ namespace LeagueApi.Models
 
         [JsonProperty("runes")]
         public List<Rune> Runes { get; set; }
-
-
+        
         //TimeLine TimeLine { get; set; }
 
         [JsonProperty("spell2Id")]
@@ -276,7 +275,7 @@ namespace LeagueApi.Models
         public int Id { get; set; }
     }
 
-    public class Team
+    public class TeamResponse
     {
         [JsonProperty("inhibitorKills")]
         public int InhibitorKills { get; set; }
@@ -334,5 +333,23 @@ namespace LeagueApi.Models
     {
         [JsonProperty("participantId")]
         public int Id { get; set; }
+
+        [JsonProperty("player")]
+        public PlayerResponse Player { get; set; }
+    }
+
+    public class PlayerResponse
+    {
+        [JsonProperty("matchHistoryUri")]
+        public string MatchHistoryUri { get; set; }
+
+        [JsonProperty("profileIcon")]
+        public int ProfileIcon { get; set; }
+
+        [JsonProperty("summonerId")]
+        public long SummonerId { get; set; }
+
+        [JsonProperty("summonerName")]
+        public string SummonerName { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using LeagueApi.Models;
-using RiotServices;
+﻿using RiotServices;
 
 namespace RiotAPI_GameCollector.Mappers
 {

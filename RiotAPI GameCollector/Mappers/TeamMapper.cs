@@ -4,7 +4,7 @@ namespace RiotAPI_GameCollector.Mappers
 {
     public class TeamMapper
     {
-        public static Team MapTeam(LeagueApi.Models.Team team)
+        public static Team MapTeam(TeamResponse team)
         {
             return new Team
             {

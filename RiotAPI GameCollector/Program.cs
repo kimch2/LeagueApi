@@ -10,21 +10,66 @@ namespace RiotAPI_GameCollector
     {
         static List<int> MatchIds { get; set; }
         static readonly RiotService RiotService = new RiotService();
+        static DateTime StartDate { get; set; }
+        static int RunTimes { get; set; }
+        static int Offset { get; set; }
 
-        static void Main(string[] args)
+        static void Main()
         {
-            var runTimes = 100;
+            Console.WriteLine("Hint: Pressing enter will use default values.");
+            try
+            {
+                Console.WriteLine("How many buckets should be gather?");
+                RunTimes = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Unable to read run count. Using default of 288 (24 hours)");
+                RunTimes = 100;
+            }
 
-            while (runTimes >= 0) { 
-                Console.WriteLine("Runs remaining " + runTimes);
+            try
+            {
+                Console.WriteLine("What date should we start at?");
+                DateTime startDate;
+                DateTime.TryParse(Console.ReadLine(), out startDate);
+                StartDate = startDate;
+                if (StartDate < new DateTime(2015, 4, 1))
+                    throw new Exception("Invalid start date");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Unable to read StartDate. Using default of 4/1/2015");
+                StartDate = new DateTime(2015, 4, 1);
+            }
+
+            try
+            {
+                Console.WriteLine("How far from the start date should we offset? i*5min");
+                Offset = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Unable to read offset. Using default of 0");
+                Offset = 0;
+            }
+
+            while (RunTimes >= 0)
+            {
+                Console.WriteLine("Runs remaining " + RunTimes);
                 var bucketTime = BucketTime;
+                Console.WriteLine("Time " + bucketTime);
                 MatchIds = RiotService.ApiChallenge(bucketTime);
                 if (MatchIds != null && MatchIds.Count > 0)
                 {
                     AddMatchIds(bucketTime);
                     UpdateMatches(RiotService);
                 }
-                runTimes--;
+                else
+                {
+                    Console.WriteLine("No matches found");
+                }
+                RunTimes--;
             }
         }
 
@@ -43,8 +88,17 @@ namespace RiotAPI_GameCollector
 
                     foreach (var participant in matchData.Participants)
                     {
+                        var currentPlayer = matchData.ParticipantIdentities.First(x => x.Id == participant.ParticipantId);
+                        var player = new Player
+                        {
+                            MatchHistoryUri = currentPlayer.Player.MatchHistoryUri,
+                            ProfileIcon = currentPlayer.Player.ProfileIcon,
+                            SummonerId = currentPlayer.Player.SummonerId,
+                            SummonerName = currentPlayer.Player.SummonerName
+                        };
+                        
                         var stats = StatisticsMapper.MapParticipantStat(participant.Statistics);
-                        currentMatch.Participants.Add(ParticipantMapper.MapParticipant(matchData, participant, stats));
+                        currentMatch.Participants.Add(ParticipantMapper.MapParticipant(matchData, participant, stats, player));
                     }
 
                     foreach (var team in matchData.Teams)
@@ -66,14 +120,13 @@ namespace RiotAPI_GameCollector
                 riotDb.SubmitChanges();
             }
         }
-
-        private static int _offset;
+        
         static DateTime BucketDateTime
         {
             get
             {
-                var now = DateTime.UtcNow;
-                return now.AddHours(-24).AddMinutes(-now.Minute - (_offset -= 5)).AddSeconds(-now.Second);
+                var start = StartDate;
+                return start.AddMinutes(-start.Minute + (Offset += 5)).AddSeconds(-start.Second);
                 
             }
         }

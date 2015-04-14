@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
+using RiotServices;
 
 namespace LeagueApi.Models
 {
@@ -38,18 +39,18 @@ namespace LeagueApi.Models
 
     public class PlayerList
     {
-        public PlayerList(IEnumerable<Player> players)
+        public PlayerList(IEnumerable<ParticipantResponse> players)
         {
             Players = players;
         }
 
-        public IEnumerable<Player> Players { get; set; }
+        public IEnumerable<ParticipantResponse> Players { get; set; }
 
-        public Player Totals
+        public ParticipantResponse Totals
         {
             get
             {
-                var totals = new Player {Statistics = new Statistics()};
+                var totals = new ParticipantResponse {Statistics = new Statistics()};
 
                 foreach (var player in Players)
                 {

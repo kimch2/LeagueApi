@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Mappers\MatchMapper.cs" />
     <Compile Include="Mappers\ParticipantMapper.cs" />
+    <Compile Include="Mappers\PlayerMapper.cs" />
     <Compile Include="Mappers\StatisticsMapper.cs" />
     <Compile Include="Mappers\TeamMapper.cs" />
     <Compile Include="Program.cs" />

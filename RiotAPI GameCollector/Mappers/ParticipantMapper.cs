@@ -5,7 +5,7 @@ namespace RiotAPI_GameCollector.Mappers
 {
     class ParticipantMapper
     {
-        public static Participant MapParticipant(MatchResponse matchData, ParticipantResponse participant, ParticipantStat stats, Player player)
+        public static Participant MapParticipant(MatchResponse matchData, ParticipantResponse participant, ParticipantStat stats)
         {
             return new Participant
             {
@@ -16,8 +16,7 @@ namespace RiotAPI_GameCollector.Mappers
                 ParticipantStat = stats,
                 Spell1Id = participant.Spell1Id,
                 Spell2Id = participant.Spell2Id,
-                TeamId = participant.TeamId,
-                Player = player
+                TeamId = participant.TeamId
             };
         }
     }

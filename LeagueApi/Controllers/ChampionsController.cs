@@ -102,7 +102,6 @@ namespace LeagueApi.Controllers
                 {
                     new StatisticItem("First Blood Assist", new List<long>()),
                     new StatisticItem("First Blood Kill", new List<long>()),
-                    new StatisticItem("Largest Multi Kill", new List<long>()),
                     new StatisticItem("First Inhibitor Assist", new List<long>()),
                     new StatisticItem("First Inhibitor Kill", new List<long>()),
                     new StatisticItem("First Tower Assist", new List<long>()),

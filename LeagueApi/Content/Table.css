@@ -47,10 +47,8 @@
 	
 }
 .DataTable tr:nth-child(odd){ background-color:#e5e5e5; }
-.DataTable tr:nth-child(even)    { background-color:#ffffff; }.DataTable td{
+.DataTable tr:nth-child(even){ background-color:#ffffff; }.DataTable td{
 	vertical-align:middle;
-	
-	
 	border:1px solid #000000;
 	border-width:0px 1px 1px 0px;
 	text-align:left;
@@ -67,9 +65,11 @@
 	border-width:0px 0px 0px 0px;
 }
 .DataTable tr:first-child td{
-		background:-o-linear-gradient(bottom, #4c4c4c 5%, #000000 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4c4c4c), color-stop(1, #000000) );
+	background:-o-linear-gradient(bottom, #4c4c4c 5%, #000000 100%);	
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4c4c4c), color-stop(1, #000000) );
 	background:-moz-linear-gradient( center top, #4c4c4c 5%, #000000 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#4c4c4c", endColorstr="#000000");	background: -o-linear-gradient(top,#4c4c4c,000000);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#4c4c4c", endColorstr="#000000");	
+    background: -o-linear-gradient(top,#4c4c4c,000000);
 
 	background-color:#4c4c4c;
 	border:0px solid #000000;
@@ -81,9 +81,11 @@
 	color:#ffffff;
 }
 .DataTable tr:first-child:hover td{
-	background:-o-linear-gradient(bottom, #4c4c4c 5%, #000000 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4c4c4c), color-stop(1, #000000) );
+	background:-o-linear-gradient(bottom, #4c4c4c 5%, #000000 100%);	
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4c4c4c), color-stop(1, #000000) );
 	background:-moz-linear-gradient( center top, #4c4c4c 5%, #000000 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#4c4c4c", endColorstr="#000000");	background: -o-linear-gradient(top,#4c4c4c,000000);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#4c4c4c", endColorstr="#000000");	
+    background: -o-linear-gradient(top,#4c4c4c,000000);
 
 	background-color:#4c4c4c;
 }

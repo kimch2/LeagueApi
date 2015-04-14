@@ -96,7 +96,7 @@ namespace RiotAPI_GameCollector
             {
                 using (var riotDb = new RiotDataContext())
                 {
-                    var matches = riotDb.Matches.Where(m => m.Participants.Any(p => p.ParticipantStat.WardsPlaced == null)).ToList();
+                    var matches = riotDb.Matches.Where(m => m.MapId == null).ToList();
                     UpdateMatches(matches, riotDb, RiotService);
                 }
             }

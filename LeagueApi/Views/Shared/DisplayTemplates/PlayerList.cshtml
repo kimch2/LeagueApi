@@ -10,6 +10,7 @@
     <table class="fullWidth DataTable">
         <tbody>
             <tr>
+                <td>Compare Totals</td>
                 <td>Name</td>
                 <td>Level</td>
                 <td>Kills</td>
@@ -22,18 +23,19 @@
             </tr>
         @Html.DisplayFor(m => m.Players)
 
-            <tr>
-                <td>Totals</td>
-                <td></td>
-                <td>@Html.DisplayFor(m => m.Totals.Statistics.Kills)</td>
-                <td>@Html.DisplayFor(m => m.Totals.Statistics.Deaths)</td>
-                <td>@Html.DisplayFor(m => m.Totals.Statistics.Assists)</td>
-                <td>@Html.DisplayFor(m => m.Totals.Statistics.MinionsKilled)</td>
-                <td>@Html.DisplayFor(m => m.Totals.Statistics.TotalDamageDealt)</td>
-                <td>@Html.DisplayFor(m => m.Totals.Statistics.TotalDamageDealtToChampions)</td>
-                <td>@Html.DisplayFor(m => m.Totals.Statistics.GoldEarned)</td>
+        <tr>
+            <td></td>
+            <td>Totals</td>
+            <td></td>
+            <td>@Html.DisplayFor(m => m.Totals.Statistics.Kills)</td>
+            <td>@Html.DisplayFor(m => m.Totals.Statistics.Deaths)</td>
+            <td>@Html.DisplayFor(m => m.Totals.Statistics.Assists)</td>
+            <td>@Html.DisplayFor(m => m.Totals.Statistics.MinionsKilled)</td>
+            <td>@Html.DisplayFor(m => m.Totals.Statistics.TotalDamageDealt)</td>
+            <td>@Html.DisplayFor(m => m.Totals.Statistics.TotalDamageDealtToChampions)</td>
+            <td>@Html.DisplayFor(m => m.Totals.Statistics.GoldEarned)</td>
 
-            </tr>
+        </tr>
         </tbody>
     </table>
 </div>

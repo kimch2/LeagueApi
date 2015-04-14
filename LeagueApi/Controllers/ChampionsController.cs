@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using LeagueApi.Helper;
@@ -19,50 +20,70 @@ namespace LeagueApi.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var riotDb = new RiotDataContext();
-
-            var championData = ChampionsService.CallService();
-
-            var availableChampionIds =
-                riotDb.Participants.Select(m => m.ChampionId ?? 0).ToList().Where(m => m != 0).Distinct().ToList();
-
-            var availableChampions = championData.Champions.Where(x => availableChampionIds.Contains(x.Key)).Select(x => x.Value).OrderBy(x => x.Name).ToList();
-            var firstChampionId = availableChampions.First().Id;
-            var secondChampionId = availableChampions.Skip(1).First().Id;
-
-            var firstParticipants = riotDb.Participants.Where(p => p.ChampionId == firstChampionId).ToList();
-            var secondParticipants = riotDb.Participants.Where(p => p.ChampionId == secondChampionId).ToList();
-
-            var championTotals = new TotalsStatistics(new List<List<Participant>> { firstParticipants, secondParticipants });
-
-            var model = new ChampionsViewModel
+            try
             {
-                AvailableChampions = availableChampions,
-                ChampionData = championTotals,
-                FirstChampionId = firstChampionId,
-                SecondChampionId = secondChampionId,
-                Matches = riotDb.Matches.ToList()
-            };
+                using (var riotDb = new RiotDataContext())
+                {
+                    var championData = ChampionsService.CallService();
 
-            CurrentChampionsModel = model;
-            return View(model);
+                    var availableChampionIds = riotDb.Participants
+                        .Select(m => m.ChampionId ?? 0).ToList()
+                            .Where(m => m != 0).Distinct().ToList();
+
+                    var availableChampions = championData.Champions
+                        .Where(x => availableChampionIds.Contains(x.Key))
+                            .Select(x => x.Value).OrderBy(x => x.Name).ToList();
+
+                    var ids = new List<int?> {availableChampions[0].Id, availableChampions[1].Id};
+
+                    var championTotals = new TotalsStatistics(new List<List<Participant>>
+                    {
+                        riotDb.Participants.Where(p => ids.Contains(p.ChampionId)).ToList()
+                    });
+
+                    var model = new ChampionsViewModel
+                    {
+                        AvailableChampions = availableChampions,
+                        ChampionData = championTotals,
+                        FirstChampionId = availableChampions[0].Id,
+                        SecondChampionId = availableChampions[1].Id,
+                        Matches = riotDb.Matches.ToList()
+                    };
+
+                    CurrentChampionsModel = model;
+                    return View(model);
+                }
+            }
+            catch (Exception e)
+            {
+                return View("Error", new HandleErrorInfo(e, "Champions", "Index"));
+            }
         }
 
         [HttpPost]
         public ActionResult Index(int firstChampionId, int secondChampionId)
         {
-            var currentModel = CurrentChampionsModel;
-            var riotDb = new RiotDataContext();
+            try
+            {
+                var currentModel = CurrentChampionsModel;
+                var riotDb = new RiotDataContext();
 
-            var firstParticipants = riotDb.Participants.Where(p => p.ChampionId == firstChampionId).ToList();
-            var secondParticipants = riotDb.Participants.Where(p => p.ChampionId == secondChampionId).ToList();
+                var ids = new List<int?> {firstChampionId, secondChampionId};
 
-            var championTotals = new TotalsStatistics(new List<List<Participant>> { firstParticipants, secondParticipants });
+                var championTotals = new TotalsStatistics(new List<List<Participant>>
+                {
+                    riotDb.Participants.Where(p => ids.Contains(p.ChampionId)).ToList()
+                });
 
-            currentModel.ChampionData = championTotals;
+                currentModel.ChampionData = championTotals;
 
-            CurrentChampionsModel = currentModel;
-            return View(currentModel);
+                CurrentChampionsModel = currentModel;
+                return View(currentModel);
+            }
+            catch (Exception e)
+            {
+                return View("Error", new HandleErrorInfo(e, "Champions", "Index"));
+            }
         }
     }
 

@@ -19,21 +19,22 @@ namespace LeagueApi.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            //try
-            //{
-                var model = new MatchesViewModel();
-                model.ChampionData = ChampionsService.CallService();
+            try
+            {
+                var model = new MatchesViewModel {ChampionData = ChampionsService.CallService()};
+
                 using (var riotDb = new RiotDataContext())
                     model.Matches = riotDb.Matches.Select(x => x.MatchId).ToList();
+
                 model.CurrentMatchData = MatchService.CallService(model.Matches.First());
                 model.CurrentMatchId = model.Matches.First();
                 CurrentMatchModel = model;
                 return View(model);
-            //}
-            //catch (Exception)
-            //{
-            //    return View("Error");
-            //}
+            }
+            catch (Exception e)
+            {
+                return View("Error", new HandleErrorInfo(e, "Home", "Index"));
+            }
         }
 
         public List<int> Matches { get; set; }
@@ -41,10 +42,17 @@ namespace LeagueApi.Controllers
         [HttpPost]
         public ActionResult Index(int currentMatchId)
         {
-            var currentModel = CurrentMatchModel;
-            currentModel.CurrentMatchData = MatchService.CallService(currentMatchId);
-            CurrentMatchModel = currentModel;
-            return View(currentModel);
+            try
+            {
+                var currentModel = CurrentMatchModel;
+                currentModel.CurrentMatchData = MatchService.CallService(currentMatchId);
+                CurrentMatchModel = currentModel;
+                return View(currentModel);
+            }
+            catch (Exception e)
+            {
+                return View("Error", new HandleErrorInfo(e, "Home", "Index"));
+            }
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
-using LeagueApi.Models;
 using Newtonsoft.Json;
 using RiotServices;
 
@@ -75,8 +74,15 @@ namespace LeagueApi.Helper
 
         public static string Call(string address)
         {
-            using (var client = new WebClient())
-                return client.DownloadString(address);
+            try
+            {
+                using (var client = new WebClient())
+                    return client.DownloadString(address);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Issues with communication to Riot's servers.", e);
+            }
         }
     }
 }

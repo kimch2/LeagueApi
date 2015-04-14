@@ -62,7 +62,8 @@ namespace RiotAPI_GameCollector.Mappers
                 TrueDamageDealtToChampions = statistics.TrueDamageDealtToChampions,
                 TrueDamageTaken = statistics.TrueDamageTaken,
                 VisionWardsBoughtInGame = statistics.VisionWardsBoughtInGame,
-                WardsKilled = statistics.WardsPlaced,
+                WardsPlaced = statistics.WardsPlaced,
+                WardsKilled = statistics.WardsKilled,
                 Winner = statistics.Winner
             };
         }

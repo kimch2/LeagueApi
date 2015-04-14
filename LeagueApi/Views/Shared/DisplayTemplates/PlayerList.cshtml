@@ -6,9 +6,9 @@
 }
 <div class="seperator">
     @Html.Label(team)
-    @Html.Label(winner ? "Won" : "Lost")
-    <table class="fullWidth">
-        <thead>
+    @Html.Label(winner ? "(Won)" : "(Lost)")
+    <table class="fullWidth DataTable">
+        <tbody>
             <tr>
                 <td>Name</td>
                 <td>Level</td>
@@ -20,12 +20,8 @@
                 <td>Damage To Champions</td>
                 <td>Gold Earned</td>
             </tr>
-        </thead>
-        <tbody>
-            @Html.DisplayFor(m => m.Players)
-        </tbody>
-        <tfoot>
-        <tr></tr>
+        @Html.DisplayFor(m => m.Players)
+
             <tr>
                 <td>Totals</td>
                 <td></td>
@@ -38,6 +34,6 @@
                 <td>@Html.DisplayFor(m => m.Totals.Statistics.GoldEarned)</td>
 
             </tr>
-        </tfoot>
+        </tbody>
     </table>
 </div>

@@ -15,29 +15,25 @@
 
 <div class="seperator"></div>
 
-<div class="row">
-    <div class="col-md-10">
-        <table class="fullWidth">
-            <thead>
-            <tr>
-                <td>@Html.Label("Select A Game")</td>
-                <td>@Html.Label("Match Started")</td>
-                <td>@Html.Label("Match Lasted")</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-                    {
-                        @Html.DropDownListFor(m => m.CurrentMatchId, Model.MatchItems, new {onchange = "this.form.submit();"})
-                    }
-                </td>
-                <td>@matchCreation</td>
-                <td>@matchLength</td>
-            </tr>
-            </tbody>
-        </table>
-        @Html.DisplayFor(m => m.Teams, Model.ChampionData)
-    </div>
-</div>
+<table class="fullWidth">
+    <thead>
+    <tr>
+        <td>@Html.Label("Select A Game")</td>
+        <td>@Html.Label("Match Started")</td>
+        <td>@Html.Label("Match Lasted")</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+            {
+                @Html.DropDownListFor(m => m.CurrentMatchId, Model.MatchItems, new {onchange = "this.form.submit();"})
+            }
+        </td>
+        <td>@matchCreation</td>
+        <td>@matchLength</td>
+    </tr>
+    </tbody>
+</table>
+@Html.DisplayFor(m => m.Teams, Model.ChampionData)

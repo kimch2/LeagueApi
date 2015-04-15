@@ -143,4 +143,14 @@
       <Column Name="ApiKey" Member="ApiKey1" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="" Member="WardsWinResponses">
+    <Type Name="WardsWinResponse" Id="ID1">
+      <Column Member="WardsWin" Type="System.Int32" CanBeNull="false" />
+      <Column Member="WardsLose" Type="System.Int32" CanBeNull="false" />
+      <Column Member="WardsTied" Type="System.Int32" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="dbo.WardsWin" Method="WardsWin">
+    <ElementType IdRef="ID1" />
+  </Function>
 </Database>

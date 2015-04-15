@@ -159,22 +159,21 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ChampionsController.cs" />
+    <Compile Include="Controllers\FunStatsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ActiveLink.cs" />
     <Compile Include="Helper\RiotServices.cs" />
     <Compile Include="Models\ChampionsViewModel.cs" />
+    <Compile Include="Models\FunStatsViewModel.cs" />
     <Compile Include="Models\MatchesViewModel.cs" />
     <Compile Include="Models\TotalsStatistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\RiotData.mdf" />
-    <Content Include="App_Data\RiotData_log.ldf">
-      <DependentUpon>RiotData.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Table.css" />
@@ -228,6 +227,7 @@
     </Content>
     <Content Include="Views\Shared\DisplayTemplates\StatisticsGroup.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ChampionsList.cshtml" />
+    <Content Include="Views\FunStats\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -241,6 +241,9 @@
       <Project>{6f9437f1-d57c-4ee3-913c-19140244fb0b}</Project>
       <Name>RiotServices</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

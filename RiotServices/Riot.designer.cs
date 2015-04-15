@@ -127,6 +127,21 @@ namespace RiotServices
 				return this.GetTable<ApiKey>();
 			}
 		}
+		
+		public System.Data.Linq.Table<WardsWinResponse> WardsWinResponses
+		{
+			get
+			{
+				return this.GetTable<WardsWinResponse>();
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.WardsWin")]
+		public ISingleResult<WardsWinResponse> WardsWin()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<WardsWinResponse>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Match")]
@@ -3301,6 +3316,69 @@ namespace RiotServices
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
+	public partial class WardsWinResponse
+	{
+		
+		private int _WardsWin;
+		
+		private int _WardsLose;
+		
+		private int _WardsTied;
+		
+		public WardsWinResponse()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WardsWin")]
+		public int WardsWin
+		{
+			get
+			{
+				return this._WardsWin;
+			}
+			set
+			{
+				if ((this._WardsWin != value))
+				{
+					this._WardsWin = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WardsLose")]
+		public int WardsLose
+		{
+			get
+			{
+				return this._WardsLose;
+			}
+			set
+			{
+				if ((this._WardsLose != value))
+				{
+					this._WardsLose = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WardsTied")]
+		public int WardsTied
+		{
+			get
+			{
+				return this._WardsTied;
+			}
+			set
+			{
+				if ((this._WardsTied != value))
+				{
+					this._WardsTied = value;
+				}
 			}
 		}
 	}

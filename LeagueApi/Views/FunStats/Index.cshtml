@@ -1,0 +1,9 @@
+﻿@model LeagueApi.Models.FunStatViewModel
+
+<h2>Wards</h2>
+<div>
+    @String.Format("Out of {0} games {1} were won by the team that bought more wards.", Model.MatchCount, Model.WardsWinData.WardsWin)
+</div>
+<div>
+    @String.Format("Thats {0:N0}% of games!", ((double)Model.WardsWinData.WardsWin / Model.MatchCount) * 100)
+</div>

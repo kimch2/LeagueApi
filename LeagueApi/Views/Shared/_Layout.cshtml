@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using LeagueApi.Helper
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -35,6 +36,9 @@
             .navbar-inverse .navbar-nav > li > a:hover {
                 color: #999999;
             }
+            .navbar-inverse .navbar-nav > li.selected > a{
+                color: #999999;
+            }
     </style>
 
 </head>
@@ -51,8 +55,15 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Game Viewer", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Champ Breakdown", "Index", "Champions")</li>
+                    <li class="@Html.IsSelected(actions: "Index", controllers: "Home")">
+                        <a href="@Url.Action("Index", "Home")">Game Viewer</a>
+                    </li>
+                    <li class="@Html.IsSelected(actions: "Index", controllers: "Champions")">
+                        <a href="@Url.Action("Index", "Champions")">Champ Breakdown</a>
+                    </li>
+                    <li class="@Html.IsSelected(actions: "Index", controllers: "FunStats")">
+                        <a href="@Url.Action("Index", "FunStats")">Fun Stats</a>
+                    </li>
                 </ul>
             </div>
         </div>

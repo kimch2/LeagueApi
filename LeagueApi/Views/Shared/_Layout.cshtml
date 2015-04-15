@@ -6,6 +6,9 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", false)
 
     <style type="text/css">
         .seperator {
@@ -28,11 +31,10 @@
         .navbar-inverse .navbar-nav > li > a {
             color: white;
         }
-        
 
-        .navbar-inverse .navbar-nav > li > a:hover {
-            color: #999999;
-        }
+            .navbar-inverse .navbar-nav > li > a:hover {
+                color: #999999;
+            }
     </style>
 
 </head>
@@ -59,9 +61,5 @@
         @RenderBody()
         <hr />
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

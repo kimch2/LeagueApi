@@ -72,7 +72,6 @@ namespace LeagueApi.Models
                     new StatisticItem("Total Units Healed", new List<long>()),
                     new StatisticItem("Total Time Crowd Control Dealt", new List<long>()),
                 }),
-
                 new StatisticsGroup("Jungle", new List<StatisticItem>
                 {
                     new StatisticItem("Neutral Minions Killed", new List<long>()),

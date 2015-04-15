@@ -227,6 +227,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Shared\DisplayTemplates\StatisticsGroup.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ChampionsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

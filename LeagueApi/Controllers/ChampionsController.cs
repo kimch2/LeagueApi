@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using LeagueApi.Helper;
 using LeagueApi.Models;
 using RiotServices;
-using Participant = RiotServices.Participant;
 
 namespace LeagueApi.Controllers
 {
@@ -34,21 +33,16 @@ namespace LeagueApi.Controllers
                         .Where(x => availableChampionIds.Contains(x.Key))
                             .Select(x => x.Value).OrderBy(x => x.Name).ToList();
 
-                    var ids = new List<int?> {availableChampions[0].Id, availableChampions[1].Id};
+                    var ids = new List<int?> { availableChampions[0].Id, availableChampions[1].Id, availableChampions[2].Id };
 
-                    var championTotals = new TotalsStatistics(new List<List<Participant>>
-                    {
-                        riotDb.Participants.Where(p => p.ChampionId == ids[0]).ToList(),
-                        riotDb.Participants.Where(p => p.ChampionId == ids[1]).ToList()
-                    });
-
+                    var championTotals = GetChampionTotals(ids, riotDb);
+                    
                     var model = new ChampionsViewModel
                     {
                         AvailableChampions = availableChampions,
-                        ChampionData = championTotals,
-                        FirstChampionId = availableChampions[0].Id,
-                        SecondChampionId = availableChampions[1].Id,
-                        Matches = riotDb.Matches.ToList()
+                        ChampionCount =  ids.Count,
+                        ChampionTotals = championTotals,
+                        ChampionIds = ids
                     };
 
                     CurrentChampionsModel = model;
@@ -62,30 +56,41 @@ namespace LeagueApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(int firstChampionId, int secondChampionId)
+        public ActionResult Index(int championCount, List<int?> ids)
         {
             try
             {
                 var currentModel = CurrentChampionsModel;
-                var riotDb = new RiotDataContext();
 
-                var ids = new List<int?> {firstChampionId, secondChampionId};
 
-                var championTotals = new TotalsStatistics(new List<List<Participant>>
+                while (championCount > ids.Count)
                 {
-                    riotDb.Participants.Where(p => p.ChampionId == ids[0]).ToList(),
-                    riotDb.Participants.Where(p => p.ChampionId == ids[1]).ToList()
-                });
+                    ids.Add(currentModel.AvailableChampions[ids.Count].Id);
+                }
+            
+                if (championCount < ids.Count)
+                    ids = ids.Take(championCount).ToList();
 
-                currentModel.ChampionData = championTotals;
-
-                CurrentChampionsModel = currentModel;
-                return View(currentModel);
+                using (var riotDb = new RiotDataContext())
+                {
+                    var championTotals = GetChampionTotals(ids, riotDb);
+                    currentModel.ChampionIds = ids;
+                    currentModel.ChampionCount = ids.Count;
+                    currentModel.ChampionTotals = championTotals;
+                    CurrentChampionsModel = currentModel;
+                    return View(currentModel);
+                }
             }
             catch (Exception e)
             {
                 return View("Error", new HandleErrorInfo(e, "Champions", "Index"));
             }
+        }
+
+        private static TotalsStatistics GetChampionTotals(IEnumerable<int?> ids, RiotDataContext riotDb)
+        {
+            var champions = ids.Select(id => riotDb.Participants.Where(p => p.ChampionId == id).ToList()).ToList();
+            return new TotalsStatistics(champions);
         }
     }
 }

@@ -5,7 +5,7 @@
     var champions = (Dictionary<int, ChampionResponse>) ViewBag.Champions;
 }
 
-<tr>
+<tr class="DataRow">
     <td>@Html.DisplayFor(m => champions.First(x => x.Key == Model.ChampionId).Value.Name)</td>
     <td>@Html.DisplayFor(m => Model.Statistics.ChampLevel)</td>
     <td>@Html.DisplayFor(m => Model.Statistics.Kills)</td>

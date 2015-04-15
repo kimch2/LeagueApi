@@ -1,0 +1,11 @@
+﻿@model List<int?>
+
+@{
+    var championNames = (Dictionary<string, int>)ViewData["ChampionNames"];
+    var index = 0;
+}
+
+@foreach (var id in Model)
+{
+    <td>@Html.DropDownListFor(m => m, new SelectList(championNames, "Value", "Key", id), new {@class = "championList", Name = String.Format("ids[{0}]", index++), onchange = "this.form.submit();"})</td>
+}

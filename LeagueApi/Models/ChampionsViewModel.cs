@@ -1,24 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
-using LeagueApi.Controllers;
 using RiotServices;
 
 namespace LeagueApi.Models
 {
     public class ChampionsViewModel
     {
-        public TotalsStatistics ChampionData { get; set; }
-        public List<Match> Matches { get; set; }
+        public TotalsStatistics ChampionTotals { get; set; }
         public List<ChampionResponse> AvailableChampions { get; set; }
-        public IEnumerable<SelectListItem> ChampionNames
+        public List<int?> ChampionIds { get; set; }
+        public int ChampionCount { get; set; }
+
+        public Dictionary<string, int> ChampionNames
         {
             get
             {
-                return AvailableChampions.Select(x => new SelectListItem { Text = x.Name, Value = "" + x.Id });
+                return AvailableChampions.Select(x => new Tuple<string, int>(x.Name, x.Id))
+                    .ToDictionary(x => x.Item1, x => x.Item2);
             }
         }
-        public int FirstChampionId { get; set; }
-        public int SecondChampionId { get; set; }
     }
 }

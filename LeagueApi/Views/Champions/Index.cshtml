@@ -9,11 +9,17 @@
     <table class="DataTable">
         <tbody>
             <tr>
-                <td>Champions</td>
-                <td>@Html.DropDownListFor(m => m.FirstChampionId, Model.ChampionNames, new { onchange = "this.form.submit();" })</td>
-                <td>@Html.DropDownListFor(m => m.SecondChampionId, Model.ChampionNames, new { onchange = "this.form.submit();" })</td>
+                <td>
+                    Champions
+                    @Html.DropDownListFor(m => m.ChampionCount, Enumerable.Range(1, 10).Select(x => new SelectListItem{Text = x.ToString(), Value = x.ToString()}), new { onchange = "this.form.submit();" })
+                </td>
+                @Html.EditorFor(m => m.ChampionIds, "ChampionsList", new { Model.ChampionNames })
             </tr>
-            @Html.DisplayFor(m => m.ChampionData)
+            @Html.DisplayFor(m => m.ChampionTotals)
         </tbody>
     </table>
 }
+
+<script type="text/javascript">
+    $(".sectionHeader").colSpan = $(".sectionHeader").attr("colspan", $(".championList").length + 1);
+</script>

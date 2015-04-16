@@ -27,7 +27,9 @@ namespace LeagueApi.Controllers
                 using (var riotDb = new RiotDataContext())
                 {
                     model.MatchCount = riotDb.Matches.Count();
-                    model.WardsWinData = riotDb.WardsWin().ToList().First();
+                    var funStats = riotDb.FunStats().ToList();
+                    model.WinData.Add(funStats.First(x => x.Name == "Kills"));
+                    model.WinData.Add(funStats.First(x => x.Name == "Wards"));
                 }
                     
                 return View(model);

@@ -128,19 +128,19 @@ namespace RiotServices
 			}
 		}
 		
-		public System.Data.Linq.Table<WardsWinResponse> WardsWinResponses
+		public System.Data.Linq.Table<FunStatsResponse> FunStatsResponses
 		{
 			get
 			{
-				return this.GetTable<WardsWinResponse>();
+				return this.GetTable<FunStatsResponse>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.WardsWin")]
-		public ISingleResult<WardsWinResponse> WardsWin()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FunStats")]
+		public ISingleResult<FunStatsResponse> FunStats()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<WardsWinResponse>)(result.ReturnValue));
+			return ((ISingleResult<FunStatsResponse>)(result.ReturnValue));
 		}
 	}
 	
@@ -3321,63 +3321,81 @@ namespace RiotServices
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
-	public partial class WardsWinResponse
+	public partial class FunStatsResponse
 	{
 		
-		private int _WardsWin;
+		private string _Name;
 		
-		private int _WardsLose;
+		private int _Won;
 		
-		private int _WardsTied;
+		private int _Lost;
 		
-		public WardsWinResponse()
+		private int _Tied;
+		
+		public FunStatsResponse()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WardsWin")]
-		public int WardsWin
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", CanBeNull=false)]
+		public string Name
 		{
 			get
 			{
-				return this._WardsWin;
+				return this._Name;
 			}
 			set
 			{
-				if ((this._WardsWin != value))
+				if ((this._Name != value))
 				{
-					this._WardsWin = value;
+					this._Name = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WardsLose")]
-		public int WardsLose
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Won")]
+		public int Won
 		{
 			get
 			{
-				return this._WardsLose;
+				return this._Won;
 			}
 			set
 			{
-				if ((this._WardsLose != value))
+				if ((this._Won != value))
 				{
-					this._WardsLose = value;
+					this._Won = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WardsTied")]
-		public int WardsTied
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lost")]
+		public int Lost
 		{
 			get
 			{
-				return this._WardsTied;
+				return this._Lost;
 			}
 			set
 			{
-				if ((this._WardsTied != value))
+				if ((this._Lost != value))
 				{
-					this._WardsTied = value;
+					this._Lost = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tied")]
+		public int Tied
+		{
+			get
+			{
+				return this._Tied;
+			}
+			set
+			{
+				if ((this._Tied != value))
+				{
+					this._Tied = value;
 				}
 			}
 		}

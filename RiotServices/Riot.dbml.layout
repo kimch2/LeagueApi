@@ -53,7 +53,7 @@
         <classShapeMoniker Id="600fc0cc-62c5-43bb-b790-0568d7c63fb9" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(3.65625 : 8.25); (3.65625 : 3.29734537760417); (6.25 : 3.29734537760417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.46875 : 8.25); (5.46875 : 3.30214680989583); (6.25 : 3.30214680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/RiotDataContext/Participant/Participant_Player" />
       <nodes>
         <classShapeMoniker Id="63b8cd00-5c19-46dc-8799-ea9e76fddb17" />
@@ -66,10 +66,10 @@
         <elementListCompartment Id="2c9093f7-5d1d-4ecd-b286-69a87e26c2ea" absoluteBounds="0.89000000000000012, 1.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="fc6c166a-d916-4314-9c01-92e61e97cb75" absoluteBounds="3.375, 1.125, 2, 1.3862939453125">
-      <DataClassMoniker Name="/RiotDataContext/WardsWinResponse" />
+    <classShape Id="63d07542-0352-4565-bc76-8d6d635cf5ad" absoluteBounds="3.625, 0.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/RiotDataContext/FunStatsResponse" />
       <nestedChildShapes>
-        <elementListCompartment Id="27298254-b5df-49e6-87a6-e120ff5e69a8" absoluteBounds="3.39, 1.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="503068f2-0f65-48da-af33-9f56bbfdf02c" absoluteBounds="3.64, 0.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -28,6 +28,7 @@ namespace LeagueApi.Controllers
                 {
                     model.MatchCount = riotDb.Matches.Count();
                     var funStats = riotDb.FunStats().ToList();
+                    model.WinData.Add(funStats.First(x => x.Name == "Minion Kills"));
                     model.WinData.Add(funStats.First(x => x.Name == "Kills"));
                     model.WinData.Add(funStats.First(x => x.Name == "Wards"));
                 }

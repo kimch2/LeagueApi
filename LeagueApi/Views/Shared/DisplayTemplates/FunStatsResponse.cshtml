@@ -4,13 +4,16 @@
     var matchCount = (int)ViewData["MatchCount"];
 }
 
-<h2>@Model.Name</h2>
-<div>
-    @String.Format("Out of {0} games {1} were won by the team that had more {2}", matchCount, Model.Won, Model.Name)
-</div>
-<div>
-    @String.Format("That's {0:N0}% of games.", ((double) Model.Won/matchCount)*100)
-</div>
-<div>
-    @String.Format("There were {0} tied games.", Model.Tied)
+<div class="seperator">
+    @Html.Label(@Model.Name)
+    <div>
+        @String.Format("Out of {0} games {1} were won by the team that had more {2}. {3}",
+            matchCount, Model.Won, Model.Name, Model.Name == "Minion Kills" ? "(This includes Neutral Minions)" : "")
+    </div>
+    <div>
+        @String.Format("That's {0:N0}% of games.", ((double)Model.Won / matchCount) * 100)
+    </div>
+    <div>
+        @String.Format("There were {0} tied games.", Model.Tied)
+    </div>
 </div>

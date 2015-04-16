@@ -29,16 +29,35 @@
             margin-bottom: 0;
         }
 
-        .navbar-inverse .navbar-nav > li > a {
+        .verticalLine {
+            border-left: solid #999999;
+            border-bottom: solid #999999;
+        }
+
+            .verticalLine:nth-child(1) {
+                border-bottom-left-radius: 15px;
+            }
+
+            .verticalLine:last-child {
+                border-right: solid #999999;
+                border-bottom-right-radius: 15px;
+            }
+
+        .navbar-inverse .navbar-brand {
             color: white;
         }
 
+        .navbar-inverse .navbar-nav > li > a {
+            color: 999999;
+        }
+
             .navbar-inverse .navbar-nav > li > a:hover {
-                color: #999999;
+                color: white;
             }
-            .navbar-inverse .navbar-nav > li.selected > a{
-                color: #999999;
-            }
+
+        .navbar-inverse .navbar-nav > li.selected > a {
+            color: white;
+        }
     </style>
 
 </head>
@@ -55,13 +74,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="@Html.IsSelected(actions: "Index", controllers: "Home")">
-                        <a href="@Url.Action("Index", "Home")">Game Viewer</a>
+                    <li class="verticalLine @Html.IsSelected(actions: "Index", controllers: "Home")">
+                        <a href="@Url.Action("Index", "Home")">View Games</a>
                     </li>
-                    <li class="@Html.IsSelected(actions: "Index", controllers: "Champions")">
-                        <a href="@Url.Action("Index", "Champions")">Champ Breakdown</a>
+                    <li class="verticalLine @Html.IsSelected(actions: "Index", controllers: "Champions")">
+                        <a href="@Url.Action("Index", "Champions")">Compare Champions</a>
                     </li>
-                    <li class="@Html.IsSelected(actions: "Index", controllers: "FunStats")">
+                    <li class="verticalLine @Html.IsSelected(actions: "Index", controllers: "FunStats")">
                         <a href="@Url.Action("Index", "FunStats")">Fun Stats</a>
                     </li>
                 </ul>

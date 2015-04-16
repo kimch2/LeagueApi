@@ -1,3 +1,6 @@
 ﻿@model LeagueApi.Models.FunStatViewModel
 
+<div class="seperator">
+    @String.Format("Total number of games {0}", Model.MatchCount)
+</div>
 @Html.DisplayFor(m => m.WinData, new { Model.MatchCount } )

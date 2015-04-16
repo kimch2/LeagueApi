@@ -12,8 +12,8 @@ namespace LeagueApi.Controllers
     {
         private MatchesViewModel CurrentMatchModel
         {
-            get { return (MatchesViewModel)ViewData["MatchesVM"]; }
-            set { ViewData["MatchesVM"] = value; }
+            get { return (MatchesViewModel)Session["MatchesVM"]; }
+            set { Session["MatchesVM"] = value; }
         }
         
         [HttpGet]

@@ -1,6 +1,32 @@
 ﻿@model LeagueApi.Models.FunStatViewModel
 
+<style>h4 {margin-bottom: 0}</style>
+
 <div class="seperator">
     @String.Format("Total number of games {0}", Model.MatchCount)
 </div>
+
+<h4>Who Won</h4>
 @Html.DisplayFor(m => m.WinData, new { Model.MatchCount } )
+
+<h4>How Often</h4>
+<div>
+    @String.Format("There were no Dragon kills in {0} ({1:N2}%) of games.", Model.GamesWithNoDragons, ((double) Model.GamesWithNoDragons/Model.MatchCount)*100)
+</div>
+<div>
+    @String.Format("There were no Baron kills in {0} ({1:N2}%) of games.", Model.GamesWithNoBarons, ((double) Model.GamesWithNoBarons/Model.MatchCount)*100)
+</div>
+<div class="seperator"></div>
+<div>
+    <div style="float: left; width: 49%">
+        <h4>Most Played</h4>
+        @Html.DisplayFor(m => m.MostPlayedChampions, Model.ChampionData)
+    </div>
+    <div>
+        <h4>Least Played</h4>
+        @Html.DisplayFor(m => m.LeastPlayedChampions, Model.ChampionData)
+    </div>
+</div>
+
+<h4>Who Was Strongest</h4>
+@Html.DisplayFor(m => m.WinRateChampionData, Model.ChampionData)

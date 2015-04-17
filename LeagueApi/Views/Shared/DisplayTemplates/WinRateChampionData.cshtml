@@ -1,0 +1,8 @@
+﻿@using RiotServices
+@model LeagueApi.Models.WinRateChampionData
+           
+@{
+    var champions = (Dictionary<int, ChampionResponse>)ViewBag.Champions;
+}
+
+@Html.Label(champions.First(x => x.Key == Model.ChampionId).Value.Name) won @Model.WinRate% of the time.

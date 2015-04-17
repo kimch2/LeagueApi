@@ -229,6 +229,8 @@
     <Content Include="Views\Shared\EditorTemplates\ChampionsList.cshtml" />
     <Content Include="Views\FunStats\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\FunStatsResponse.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PlayedChampionData.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\WinRateChampionData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

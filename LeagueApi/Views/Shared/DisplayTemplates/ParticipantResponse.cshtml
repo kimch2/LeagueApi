@@ -6,13 +6,13 @@
 }
 
 <tr class="DataRow">
-    <td>@Html.DisplayFor(m => champions.First(x => x.Key == Model.ChampionId).Value.Name)</td>
-    <td>@Html.DisplayFor(m => Model.Statistics.ChampLevel)</td>
-    <td>@Html.DisplayFor(m => Model.Statistics.Kills)</td>
-    <td>@Html.DisplayFor(m => Model.Statistics.Deaths)</td>
-    <td>@Html.DisplayFor(m => Model.Statistics.Assists)</td>
-    <td>@Html.DisplayFor(m => Model.Statistics.MinionsKilled)</td>
-    <td>@Html.DisplayFor(m => Model.Statistics.TotalDamageDealt)</td>
-    <td>@Html.DisplayFor(m => Model.Statistics.TotalDamageDealtToChampions)</td>
-    <td>@Html.DisplayFor(m => Model.Statistics.GoldEarned)</td>
+    <td>@Html.DisplayFor(m => champions.First(x => x.Key == m.ChampionId).Value.Name)</td>
+    <td>@Html.DisplayFor(m => m.Statistics.ChampLevel)</td>
+    <td>@Html.DisplayFor(m => m.Statistics.Kills)</td>
+    <td>@Html.DisplayFor(m => m.Statistics.Deaths)</td>
+    <td>@Html.DisplayFor(m => m.Statistics.Assists)</td>
+    <td>@Html.DisplayFor(m => m.Statistics.MinionsKilled)</td>
+    <td>@Html.DisplayFor(m => m.Statistics.TotalDamageDealt)</td>
+    <td>@Html.DisplayFor(m => m.Statistics.TotalDamageDealtToChampions)</td>
+    <td>@Html.DisplayFor(m => m.Statistics.GoldEarned)</td>
 </tr>

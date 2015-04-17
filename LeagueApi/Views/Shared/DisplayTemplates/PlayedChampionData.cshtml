@@ -1,0 +1,10 @@
+﻿@using RiotServices
+@model LeagueApi.Models.PlayedChampionData
+
+@{
+    var champions = (Dictionary<int, ChampionResponse>)ViewBag.Champions;
+}
+
+<div>
+    @Html.Label(champions.First(x => x.Key == Model.ChampionId).Value.Name) was played @Model.PlayCount times.
+</div>

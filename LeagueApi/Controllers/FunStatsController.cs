@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
 using LeagueApi.Helper;
 using LeagueApi.Models;
 using RiotServices;
@@ -12,12 +9,6 @@ namespace LeagueApi.Controllers
 {
     public class FunStatsController : Controller
     {
-        private MatchesViewModel CurrentMatchModel
-        {
-            get { return (MatchesViewModel) ViewData["MatchesVM"]; }
-            set { ViewData["MatchesVM"] = value; }
-        }
-
         [HttpGet]
         public ActionResult Index()
         {
@@ -86,6 +77,9 @@ namespace LeagueApi.Controllers
                                 WinCount = w.WinCount,
                                 LossCount = l.LossCount
                             })
+                            .ToList()
+                            .OrderByDescending(x => x.WinRate)
+                            .Take(5)
                             .ToList();
 
 

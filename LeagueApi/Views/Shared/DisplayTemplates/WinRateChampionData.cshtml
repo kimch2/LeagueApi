@@ -5,4 +5,6 @@
     var champions = (Dictionary<int, ChampionResponse>)ViewBag.Champions;
 }
 
-@Html.Label(champions.First(x => x.Key == Model.ChampionId).Value.Name) won @Model.WinRate% of the time.
+<div>
+    @Html.Label(champions.First(x => x.Key == Model.ChampionId).Value.Name) won @String.Format("{0:N2}%", Model.WinRate) of the time.
+</div>

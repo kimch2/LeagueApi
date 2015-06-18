@@ -1,3 +1,3 @@
 # LeagueApi
 
-Site can be seen at http://www.jtgeek.somee.com/LeagueApi/
+Site can be seen at http://www.notquite.me/LeagueApi/

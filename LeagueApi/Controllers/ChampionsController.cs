@@ -35,7 +35,7 @@ namespace LeagueApi.Controllers
 
                     var ids = new List<int?> { availableChampions[0].Id, availableChampions[1].Id, availableChampions[2].Id };
 
-                    var championTotals = GetChampionTotals(ids, riotDb);
+                    var championTotals = new TotalsStatistics(ids, riotDb);
                     
                     var model = new ChampionsViewModel
                     {
@@ -73,7 +73,7 @@ namespace LeagueApi.Controllers
 
                 using (var riotDb = new RiotDataContext())
                 {
-                    var championTotals = GetChampionTotals(ids, riotDb);
+                    var championTotals = new TotalsStatistics(ids, riotDb);
                     currentModel.ChampionIds = ids;
                     currentModel.ChampionCount = ids.Count;
                     currentModel.ChampionTotals = championTotals;
@@ -85,12 +85,6 @@ namespace LeagueApi.Controllers
             {
                 return View("Error", new HandleErrorInfo(e, "Champions", "Index"));
             }
-        }
-
-        private static TotalsStatistics GetChampionTotals(IEnumerable<int?> ids, RiotDataContext riotDb)
-        {
-            var champions = ids.Select(id => riotDb.Participants.Where(p => p.ChampionId == id).ToList()).ToList();
-            return new TotalsStatistics(champions);
         }
     }
 }

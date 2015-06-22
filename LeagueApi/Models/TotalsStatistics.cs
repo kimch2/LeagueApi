@@ -6,7 +6,7 @@ namespace LeagueApi.Models
 {
     public class TotalsStatistics
     {
-        public TotalsStatistics(IEnumerable<List<Participant>> champions)
+        public TotalsStatistics(IEnumerable<int?> ids, RiotDataContext riotDb)
         {
             Statistics = new List<StatisticsGroup>
             {
@@ -99,142 +99,55 @@ namespace LeagueApi.Models
             var jungleSection = Statistics.First(x => x.Name == "Jungle").Values;
             var visionSection = Statistics.First(x => x.Name == "Vision").Values;
 
-            foreach (var participants in champions)
+            foreach (var id in ids)
             {
-                gameSection.First(x => x.Name == "Wins")
-                    .Values.Add(participants.Count(x => x.ParticipantStat.Winner == true));
+                var champion = riotDb.ChampionStats.First(x => x.ChampionId == id);
 
-                gameSection.First(x => x.Name == "Losses")
-                    .Values.Add(participants.Count(x => x.ParticipantStat.Winner == false));
-
-                basicSection.First(x => x.Name == "Kills")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.Kills ?? 0));
-
-                basicSection.First(x => x.Name == "Deaths")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.Deaths ?? 0));
-
-                basicSection.First(x => x.Name == "Assists")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.Assists ?? 0));
-
-                farmingSection.First(x => x.Name == "Minions Killed")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.MinionsKilled ?? 0));
-
-                farmingSection.First(x => x.Name == "Gold Earned")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.GoldEarned ?? 0));
-
-                killSection.First(x => x.Name == "Killing Sprees")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.KillingSprees ?? 0));
-
-                killSection.First(x => x.Name == "Largest Killing Spree")
-                    .Values.Add(participants.Max(x => x.ParticipantStat.KillingSprees ?? 0));
-
-                killSection.First(x => x.Name == "Largest Multi Kill")
-                    .Values.Add(participants.Max(x => x.ParticipantStat.LargestMultiKill ?? 0));
-
-                killSection.First(x => x.Name == "Double Kills")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.DoubleKills ?? 0));
-
-                killSection.First(x => x.Name == "Triple Kills")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.TripleKills ?? 0));
-
-                killSection.First(x => x.Name == "Quadra Kills")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.QuadraKills ?? 0));
-
-                killSection.First(x => x.Name == "Penta Kills")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.PentaKills ?? 0));
-
-                firstsSection.First(x => x.Name == "First Blood Assist")
-                    .Values.Add(participants.Count(x => x.ParticipantStat.FirstBloodAssist == true));
-
-                firstsSection.First(x => x.Name == "First Blood Kill")
-                    .Values.Add(participants.Count(x => x.ParticipantStat.FirstBloodKill == true));
-
-                firstsSection.First(x => x.Name == "First Inhibitor Assist")
-                    .Values.Add(participants.Count(x => x.ParticipantStat.FirstInhibitorAssist == true));
-
-                firstsSection.First(x => x.Name == "First Inhibitor Kill")
-                    .Values.Add(participants.Count(x => x.ParticipantStat.FirsInhibitorKill == true));
-
-                firstsSection.First(x => x.Name == "First Tower Assist")
-                    .Values.Add(participants.Count(x => x.ParticipantStat.FirstTowerAssist == true));
-
-                firstsSection.First(x => x.Name == "First Tower Kill")
-                    .Values.Add(participants.Count(x => x.ParticipantStat.FirstTowerKill == true));
-
-                objectiveSection.First(x => x.Name == "Inhibitor Kills")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.InhibitorKills ?? 0));
-
-                objectiveSection.First(x => x.Name == "Tower Kills")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.TowerKills ?? 0));
-
-                damageSection.First(x => x.Name == "Largest Critical Strike")
-                    .Values.Add(participants.Max(x => x.ParticipantStat.LargestCriticalStrike ?? 0));
-
-                damageSection.First(x => x.Name == "Magic Damage")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.MagicDamageDealt ?? 0));
-
-                damageSection.First(x => x.Name == "Magic Damage To Champions")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.MagicDamageDealtToChampions ?? 0));
-
-                damageSection.First(x => x.Name == "Magic Damage Taken")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.MagicDamageTaken ?? 0));
-
-                damageSection.First(x => x.Name == "Physical Damage")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.PhysicalDamageDealt ?? 0));
-
-                damageSection.First(x => x.Name == "Physical Damage To Champions")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.PhysicalDamageDealtToChampions ?? 0));
-
-                damageSection.First(x => x.Name == "Physical Damage Taken")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.PhysicalDamageTaken ?? 0));
-
-                damageSection.First(x => x.Name == "Total Damage")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.TotalDamageDealt ?? 0));
-
-                damageSection.First(x => x.Name == "Total Damage To Champions")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.TotalDamageDealtToChampions ?? 0));
-
-                damageSection.First(x => x.Name == "Total Damage Taken")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.TotalDamageTaken ?? 0));
-
-                damageSection.First(x => x.Name == "True Damage")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.TrueDamageDealt ?? 0));
-
-                damageSection.First(x => x.Name == "True Damage To Champions")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.TrueDamageDealtToChampions ?? 0));
-
-                damageSection.First(x => x.Name == "True Damage Taken")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.TrueDamageTaken ?? 0));
-
-                healingSection.First(x => x.Name == "Total Healing")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.TotalHeal ?? 0));
-
-                healingSection.First(x => x.Name == "Total Units Healed")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.TotalUnitsHealed ?? 0));
-
-                healingSection.First(x => x.Name == "Total Time Crowd Control Dealt")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.TotalTimeCrowdControlDealt ?? 0));
-
-                jungleSection.First(x => x.Name == "Neutral Minions Killed")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.NeutralMinionsKilled ?? 0));
-
-                jungleSection.First(x => x.Name == "Neutral Minions Killed Enemy Jungle")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.NeutralMinionsKilledEnemyJungle ?? 0));
-
-                jungleSection.First(x => x.Name == "Neutral Minions Killed Team Jungle")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.NeutralMinionsKilledTeamJungle ?? 0));
-
-                visionSection.First(x => x.Name == "Sight Wards Bought")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.SightWardsBoughtInGame ?? 0));
-
-                visionSection.First(x => x.Name == "Vision Wards Bought")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.VisionWardsBoughtInGame ?? 0));
-
-                visionSection.First(x => x.Name == "Wards Placed")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.WardsPlaced ?? 0));
-
-                visionSection.First(x => x.Name == "Wards Killed")
-                    .Values.Add(participants.Sum(x => x.ParticipantStat.WardsKilled ?? 0));
+                gameSection.First(x => x.Name == "Wins").Values.Add(champion.Wins ?? 0);
+                gameSection.First(x => x.Name == "Losses").Values.Add(champion.Losses ?? 0);
+                basicSection.First(x => x.Name == "Kills").Values.Add(champion.Kills ?? 0);
+                basicSection.First(x => x.Name == "Deaths").Values.Add(champion.Deaths ?? 0);
+                basicSection.First(x => x.Name == "Assists").Values.Add(champion.Assists ?? 0);
+                farmingSection.First(x => x.Name == "Minions Killed").Values.Add(champion.MinionsKilled ?? 0);
+                farmingSection.First(x => x.Name == "Gold Earned").Values.Add(champion.GoldEarned ?? 0);
+                killSection.First(x => x.Name == "Killing Sprees").Values.Add(champion.KillingSprees ?? 0);
+                killSection.First(x => x.Name == "Largest Killing Spree").Values.Add(champion.LargestKillingSpree ?? 0);
+                killSection.First(x => x.Name == "Largest Multi Kill").Values.Add(champion.LargestMultiKill ?? 0);
+                killSection.First(x => x.Name == "Double Kills").Values.Add(champion.DoubleKills ?? 0);
+                killSection.First(x => x.Name == "Triple Kills").Values.Add(champion.TripleKills ?? 0);
+                killSection.First(x => x.Name == "Quadra Kills").Values.Add(champion.QuadraKills ?? 0);
+                killSection.First(x => x.Name == "Penta Kills").Values.Add(champion.PentaKills ?? 0);
+                firstsSection.First(x => x.Name == "First Blood Assist").Values.Add(champion.FirstBloodAssists ?? 0);
+                firstsSection.First(x => x.Name == "First Blood Kill").Values.Add(champion.FirstBloodKill ?? 0);
+                firstsSection.First(x => x.Name == "First Inhibitor Assist").Values.Add(champion.FirstInhibitorAssist ?? 0);
+                firstsSection.First(x => x.Name == "First Inhibitor Kill").Values.Add(champion.FirsInhibitorKill ?? 0);
+                firstsSection.First(x => x.Name == "First Tower Assist").Values.Add(champion.FirstTowerAssist ?? 0);
+                firstsSection.First(x => x.Name == "First Tower Kill").Values.Add(champion.FirstTowerKill ?? 0);
+                objectiveSection.First(x => x.Name == "Inhibitor Kills").Values.Add(champion.InhibitorKills ?? 0);
+                objectiveSection.First(x => x.Name == "Tower Kills").Values.Add(champion.TowerKills ?? 0);
+                damageSection.First(x => x.Name == "Largest Critical Strike").Values.Add(champion.LargestCriticalStrike ?? 0);
+                damageSection.First(x => x.Name == "Magic Damage").Values.Add(champion.MagicDamageDealt ?? 0);
+                damageSection.First(x => x.Name == "Magic Damage To Champions").Values.Add(champion.MagicDamageDealtToChampions ?? 0);
+                damageSection.First(x => x.Name == "Magic Damage Taken").Values.Add(champion.MagicDamageTaken ?? 0);
+                damageSection.First(x => x.Name == "Physical Damage").Values.Add(champion.PhysicalDamageDealt ?? 0);
+                damageSection.First(x => x.Name == "Physical Damage To Champions").Values.Add(champion.PhysicalDamageDealtToChampions ?? 0);
+                damageSection.First(x => x.Name == "Physical Damage Taken").Values.Add(champion.PhysicalDamageTaken ?? 0);
+                damageSection.First(x => x.Name == "Total Damage").Values.Add(champion.TotalDamageDealt ?? 0);
+                damageSection.First(x => x.Name == "Total Damage To Champions").Values.Add(champion.TotalDamageDealtToChampions ?? 0);
+                damageSection.First(x => x.Name == "Total Damage Taken").Values.Add(champion.TotalDamageTaken ?? 0);
+                damageSection.First(x => x.Name == "True Damage").Values.Add(champion.TrueDamageDealt ?? 0);
+                damageSection.First(x => x.Name == "True Damage To Champions").Values.Add(champion.TrueDamageDealtToChampions ?? 0);
+                damageSection.First(x => x.Name == "True Damage Taken").Values.Add(champion.TrueDamageTaken ?? 0);
+                healingSection.First(x => x.Name == "Total Healing").Values.Add(champion.TotalHealing ?? 0);
+                healingSection.First(x => x.Name == "Total Units Healed").Values.Add(champion.TotalUnitsHealed ?? 0);
+                healingSection.First(x => x.Name == "Total Time Crowd Control Dealt").Values.Add(champion.TotalTimeCrowdControlDealt ?? 0);
+                jungleSection.First(x => x.Name == "Neutral Minions Killed").Values.Add(champion.NeutralMinionsKilled ?? 0);
+                jungleSection.First(x => x.Name == "Neutral Minions Killed Enemy Jungle").Values.Add(champion.NeutralMinionsKilledEnemyJungle ?? 0);
+                jungleSection.First(x => x.Name == "Neutral Minions Killed Team Jungle").Values.Add(champion.NeutralMinionsKilledTeamJungle ?? 0);
+                visionSection.First(x => x.Name == "Sight Wards Bought").Values.Add(champion.SightWardsBoughtInGame ?? 0);
+                visionSection.First(x => x.Name == "Vision Wards Bought").Values.Add(champion.VisionWardsBoughtInGame ?? 0);
+                visionSection.First(x => x.Name == "Wards Placed").Values.Add(champion.WardsPlaced ?? 0);
+                visionSection.First(x => x.Name == "Wards Killed").Values.Add(champion.WardsKilled ?? 0);
             }
         }
 

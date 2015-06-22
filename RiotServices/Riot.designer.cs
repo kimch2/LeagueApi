@@ -136,6 +136,14 @@ namespace RiotServices
 			}
 		}
 		
+		public System.Data.Linq.Table<ChampionStat> ChampionStats
+		{
+			get
+			{
+				return this.GetTable<ChampionStat>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FunStats")]
 		public ISingleResult<FunStatsResponse> FunStats()
 		{
@@ -3396,6 +3404,843 @@ namespace RiotServices
 				if ((this._Tied != value))
 				{
 					this._Tied = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ChampionStats")]
+	public partial class ChampionStat
+	{
+		
+		private System.Nullable<int> _ChampionId;
+		
+		private System.Nullable<int> _Wins;
+		
+		private System.Nullable<int> _Losses;
+		
+		private System.Nullable<long> _Kills;
+		
+		private System.Nullable<long> _Deaths;
+		
+		private System.Nullable<long> _Assists;
+		
+		private System.Nullable<long> _MinionsKilled;
+		
+		private System.Nullable<long> _GoldEarned;
+		
+		private System.Nullable<long> _KillingSprees;
+		
+		private System.Nullable<long> _LargestKillingSpree;
+		
+		private System.Nullable<long> _LargestMultiKill;
+		
+		private System.Nullable<long> _DoubleKills;
+		
+		private System.Nullable<long> _TripleKills;
+		
+		private System.Nullable<long> _QuadraKills;
+		
+		private System.Nullable<long> _PentaKills;
+		
+		private System.Nullable<int> _FirstBloodAssists;
+		
+		private System.Nullable<int> _FirstBloodKill;
+		
+		private System.Nullable<int> _FirstInhibitorAssist;
+		
+		private System.Nullable<int> _FirsInhibitorKill;
+		
+		private System.Nullable<int> _FirstTowerAssist;
+		
+		private System.Nullable<int> _FirstTowerKill;
+		
+		private System.Nullable<long> _InhibitorKills;
+		
+		private System.Nullable<long> _TowerKills;
+		
+		private System.Nullable<long> _LargestCriticalStrike;
+		
+		private System.Nullable<long> _MagicDamageDealt;
+		
+		private System.Nullable<long> _MagicDamageDealtToChampions;
+		
+		private System.Nullable<long> _MagicDamageTaken;
+		
+		private System.Nullable<long> _PhysicalDamageDealt;
+		
+		private System.Nullable<long> _PhysicalDamageDealtToChampions;
+		
+		private System.Nullable<long> _PhysicalDamageTaken;
+		
+		private System.Nullable<long> _TotalDamageDealt;
+		
+		private System.Nullable<long> _TotalDamageDealtToChampions;
+		
+		private System.Nullable<long> _TotalDamageTaken;
+		
+		private System.Nullable<long> _TrueDamageDealt;
+		
+		private System.Nullable<long> _TrueDamageDealtToChampions;
+		
+		private System.Nullable<long> _TrueDamageTaken;
+		
+		private System.Nullable<long> _TotalHealing;
+		
+		private System.Nullable<long> _TotalUnitsHealed;
+		
+		private System.Nullable<long> _TotalTimeCrowdControlDealt;
+		
+		private System.Nullable<long> _NeutralMinionsKilled;
+		
+		private System.Nullable<long> _NeutralMinionsKilledEnemyJungle;
+		
+		private System.Nullable<long> _NeutralMinionsKilledTeamJungle;
+		
+		private System.Nullable<long> _SightWardsBoughtInGame;
+		
+		private System.Nullable<long> _VisionWardsBoughtInGame;
+		
+		private System.Nullable<long> _WardsPlaced;
+		
+		private System.Nullable<long> _WardsKilled;
+		
+		public ChampionStat()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChampionId", DbType="Int")]
+		public System.Nullable<int> ChampionId
+		{
+			get
+			{
+				return this._ChampionId;
+			}
+			set
+			{
+				if ((this._ChampionId != value))
+				{
+					this._ChampionId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Wins", DbType="Int")]
+		public System.Nullable<int> Wins
+		{
+			get
+			{
+				return this._Wins;
+			}
+			set
+			{
+				if ((this._Wins != value))
+				{
+					this._Wins = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Losses", DbType="Int")]
+		public System.Nullable<int> Losses
+		{
+			get
+			{
+				return this._Losses;
+			}
+			set
+			{
+				if ((this._Losses != value))
+				{
+					this._Losses = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kills", DbType="BigInt")]
+		public System.Nullable<long> Kills
+		{
+			get
+			{
+				return this._Kills;
+			}
+			set
+			{
+				if ((this._Kills != value))
+				{
+					this._Kills = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Deaths", DbType="BigInt")]
+		public System.Nullable<long> Deaths
+		{
+			get
+			{
+				return this._Deaths;
+			}
+			set
+			{
+				if ((this._Deaths != value))
+				{
+					this._Deaths = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Assists", DbType="BigInt")]
+		public System.Nullable<long> Assists
+		{
+			get
+			{
+				return this._Assists;
+			}
+			set
+			{
+				if ((this._Assists != value))
+				{
+					this._Assists = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MinionsKilled", DbType="BigInt")]
+		public System.Nullable<long> MinionsKilled
+		{
+			get
+			{
+				return this._MinionsKilled;
+			}
+			set
+			{
+				if ((this._MinionsKilled != value))
+				{
+					this._MinionsKilled = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoldEarned", DbType="BigInt")]
+		public System.Nullable<long> GoldEarned
+		{
+			get
+			{
+				return this._GoldEarned;
+			}
+			set
+			{
+				if ((this._GoldEarned != value))
+				{
+					this._GoldEarned = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KillingSprees", DbType="BigInt")]
+		public System.Nullable<long> KillingSprees
+		{
+			get
+			{
+				return this._KillingSprees;
+			}
+			set
+			{
+				if ((this._KillingSprees != value))
+				{
+					this._KillingSprees = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LargestKillingSpree", DbType="BigInt")]
+		public System.Nullable<long> LargestKillingSpree
+		{
+			get
+			{
+				return this._LargestKillingSpree;
+			}
+			set
+			{
+				if ((this._LargestKillingSpree != value))
+				{
+					this._LargestKillingSpree = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LargestMultiKill", DbType="BigInt")]
+		public System.Nullable<long> LargestMultiKill
+		{
+			get
+			{
+				return this._LargestMultiKill;
+			}
+			set
+			{
+				if ((this._LargestMultiKill != value))
+				{
+					this._LargestMultiKill = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoubleKills", DbType="BigInt")]
+		public System.Nullable<long> DoubleKills
+		{
+			get
+			{
+				return this._DoubleKills;
+			}
+			set
+			{
+				if ((this._DoubleKills != value))
+				{
+					this._DoubleKills = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TripleKills", DbType="BigInt")]
+		public System.Nullable<long> TripleKills
+		{
+			get
+			{
+				return this._TripleKills;
+			}
+			set
+			{
+				if ((this._TripleKills != value))
+				{
+					this._TripleKills = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuadraKills", DbType="BigInt")]
+		public System.Nullable<long> QuadraKills
+		{
+			get
+			{
+				return this._QuadraKills;
+			}
+			set
+			{
+				if ((this._QuadraKills != value))
+				{
+					this._QuadraKills = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PentaKills", DbType="BigInt")]
+		public System.Nullable<long> PentaKills
+		{
+			get
+			{
+				return this._PentaKills;
+			}
+			set
+			{
+				if ((this._PentaKills != value))
+				{
+					this._PentaKills = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstBloodAssists", DbType="Int")]
+		public System.Nullable<int> FirstBloodAssists
+		{
+			get
+			{
+				return this._FirstBloodAssists;
+			}
+			set
+			{
+				if ((this._FirstBloodAssists != value))
+				{
+					this._FirstBloodAssists = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstBloodKill", DbType="Int")]
+		public System.Nullable<int> FirstBloodKill
+		{
+			get
+			{
+				return this._FirstBloodKill;
+			}
+			set
+			{
+				if ((this._FirstBloodKill != value))
+				{
+					this._FirstBloodKill = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstInhibitorAssist", DbType="Int")]
+		public System.Nullable<int> FirstInhibitorAssist
+		{
+			get
+			{
+				return this._FirstInhibitorAssist;
+			}
+			set
+			{
+				if ((this._FirstInhibitorAssist != value))
+				{
+					this._FirstInhibitorAssist = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirsInhibitorKill", DbType="Int")]
+		public System.Nullable<int> FirsInhibitorKill
+		{
+			get
+			{
+				return this._FirsInhibitorKill;
+			}
+			set
+			{
+				if ((this._FirsInhibitorKill != value))
+				{
+					this._FirsInhibitorKill = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstTowerAssist", DbType="Int")]
+		public System.Nullable<int> FirstTowerAssist
+		{
+			get
+			{
+				return this._FirstTowerAssist;
+			}
+			set
+			{
+				if ((this._FirstTowerAssist != value))
+				{
+					this._FirstTowerAssist = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstTowerKill", DbType="Int")]
+		public System.Nullable<int> FirstTowerKill
+		{
+			get
+			{
+				return this._FirstTowerKill;
+			}
+			set
+			{
+				if ((this._FirstTowerKill != value))
+				{
+					this._FirstTowerKill = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InhibitorKills", DbType="BigInt")]
+		public System.Nullable<long> InhibitorKills
+		{
+			get
+			{
+				return this._InhibitorKills;
+			}
+			set
+			{
+				if ((this._InhibitorKills != value))
+				{
+					this._InhibitorKills = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TowerKills", DbType="BigInt")]
+		public System.Nullable<long> TowerKills
+		{
+			get
+			{
+				return this._TowerKills;
+			}
+			set
+			{
+				if ((this._TowerKills != value))
+				{
+					this._TowerKills = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LargestCriticalStrike", DbType="BigInt")]
+		public System.Nullable<long> LargestCriticalStrike
+		{
+			get
+			{
+				return this._LargestCriticalStrike;
+			}
+			set
+			{
+				if ((this._LargestCriticalStrike != value))
+				{
+					this._LargestCriticalStrike = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MagicDamageDealt", DbType="BigInt")]
+		public System.Nullable<long> MagicDamageDealt
+		{
+			get
+			{
+				return this._MagicDamageDealt;
+			}
+			set
+			{
+				if ((this._MagicDamageDealt != value))
+				{
+					this._MagicDamageDealt = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MagicDamageDealtToChampions", DbType="BigInt")]
+		public System.Nullable<long> MagicDamageDealtToChampions
+		{
+			get
+			{
+				return this._MagicDamageDealtToChampions;
+			}
+			set
+			{
+				if ((this._MagicDamageDealtToChampions != value))
+				{
+					this._MagicDamageDealtToChampions = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MagicDamageTaken", DbType="BigInt")]
+		public System.Nullable<long> MagicDamageTaken
+		{
+			get
+			{
+				return this._MagicDamageTaken;
+			}
+			set
+			{
+				if ((this._MagicDamageTaken != value))
+				{
+					this._MagicDamageTaken = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhysicalDamageDealt", DbType="BigInt")]
+		public System.Nullable<long> PhysicalDamageDealt
+		{
+			get
+			{
+				return this._PhysicalDamageDealt;
+			}
+			set
+			{
+				if ((this._PhysicalDamageDealt != value))
+				{
+					this._PhysicalDamageDealt = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhysicalDamageDealtToChampions", DbType="BigInt")]
+		public System.Nullable<long> PhysicalDamageDealtToChampions
+		{
+			get
+			{
+				return this._PhysicalDamageDealtToChampions;
+			}
+			set
+			{
+				if ((this._PhysicalDamageDealtToChampions != value))
+				{
+					this._PhysicalDamageDealtToChampions = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhysicalDamageTaken", DbType="BigInt")]
+		public System.Nullable<long> PhysicalDamageTaken
+		{
+			get
+			{
+				return this._PhysicalDamageTaken;
+			}
+			set
+			{
+				if ((this._PhysicalDamageTaken != value))
+				{
+					this._PhysicalDamageTaken = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalDamageDealt", DbType="BigInt")]
+		public System.Nullable<long> TotalDamageDealt
+		{
+			get
+			{
+				return this._TotalDamageDealt;
+			}
+			set
+			{
+				if ((this._TotalDamageDealt != value))
+				{
+					this._TotalDamageDealt = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalDamageDealtToChampions", DbType="BigInt")]
+		public System.Nullable<long> TotalDamageDealtToChampions
+		{
+			get
+			{
+				return this._TotalDamageDealtToChampions;
+			}
+			set
+			{
+				if ((this._TotalDamageDealtToChampions != value))
+				{
+					this._TotalDamageDealtToChampions = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalDamageTaken", DbType="BigInt")]
+		public System.Nullable<long> TotalDamageTaken
+		{
+			get
+			{
+				return this._TotalDamageTaken;
+			}
+			set
+			{
+				if ((this._TotalDamageTaken != value))
+				{
+					this._TotalDamageTaken = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrueDamageDealt", DbType="BigInt")]
+		public System.Nullable<long> TrueDamageDealt
+		{
+			get
+			{
+				return this._TrueDamageDealt;
+			}
+			set
+			{
+				if ((this._TrueDamageDealt != value))
+				{
+					this._TrueDamageDealt = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrueDamageDealtToChampions", DbType="BigInt")]
+		public System.Nullable<long> TrueDamageDealtToChampions
+		{
+			get
+			{
+				return this._TrueDamageDealtToChampions;
+			}
+			set
+			{
+				if ((this._TrueDamageDealtToChampions != value))
+				{
+					this._TrueDamageDealtToChampions = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrueDamageTaken", DbType="BigInt")]
+		public System.Nullable<long> TrueDamageTaken
+		{
+			get
+			{
+				return this._TrueDamageTaken;
+			}
+			set
+			{
+				if ((this._TrueDamageTaken != value))
+				{
+					this._TrueDamageTaken = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalHealing", DbType="BigInt")]
+		public System.Nullable<long> TotalHealing
+		{
+			get
+			{
+				return this._TotalHealing;
+			}
+			set
+			{
+				if ((this._TotalHealing != value))
+				{
+					this._TotalHealing = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalUnitsHealed", DbType="BigInt")]
+		public System.Nullable<long> TotalUnitsHealed
+		{
+			get
+			{
+				return this._TotalUnitsHealed;
+			}
+			set
+			{
+				if ((this._TotalUnitsHealed != value))
+				{
+					this._TotalUnitsHealed = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalTimeCrowdControlDealt", DbType="BigInt")]
+		public System.Nullable<long> TotalTimeCrowdControlDealt
+		{
+			get
+			{
+				return this._TotalTimeCrowdControlDealt;
+			}
+			set
+			{
+				if ((this._TotalTimeCrowdControlDealt != value))
+				{
+					this._TotalTimeCrowdControlDealt = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NeutralMinionsKilled", DbType="BigInt")]
+		public System.Nullable<long> NeutralMinionsKilled
+		{
+			get
+			{
+				return this._NeutralMinionsKilled;
+			}
+			set
+			{
+				if ((this._NeutralMinionsKilled != value))
+				{
+					this._NeutralMinionsKilled = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NeutralMinionsKilledEnemyJungle", DbType="BigInt")]
+		public System.Nullable<long> NeutralMinionsKilledEnemyJungle
+		{
+			get
+			{
+				return this._NeutralMinionsKilledEnemyJungle;
+			}
+			set
+			{
+				if ((this._NeutralMinionsKilledEnemyJungle != value))
+				{
+					this._NeutralMinionsKilledEnemyJungle = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NeutralMinionsKilledTeamJungle", DbType="BigInt")]
+		public System.Nullable<long> NeutralMinionsKilledTeamJungle
+		{
+			get
+			{
+				return this._NeutralMinionsKilledTeamJungle;
+			}
+			set
+			{
+				if ((this._NeutralMinionsKilledTeamJungle != value))
+				{
+					this._NeutralMinionsKilledTeamJungle = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SightWardsBoughtInGame", DbType="BigInt")]
+		public System.Nullable<long> SightWardsBoughtInGame
+		{
+			get
+			{
+				return this._SightWardsBoughtInGame;
+			}
+			set
+			{
+				if ((this._SightWardsBoughtInGame != value))
+				{
+					this._SightWardsBoughtInGame = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VisionWardsBoughtInGame", DbType="BigInt")]
+		public System.Nullable<long> VisionWardsBoughtInGame
+		{
+			get
+			{
+				return this._VisionWardsBoughtInGame;
+			}
+			set
+			{
+				if ((this._VisionWardsBoughtInGame != value))
+				{
+					this._VisionWardsBoughtInGame = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WardsPlaced", DbType="BigInt")]
+		public System.Nullable<long> WardsPlaced
+		{
+			get
+			{
+				return this._WardsPlaced;
+			}
+			set
+			{
+				if ((this._WardsPlaced != value))
+				{
+					this._WardsPlaced = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WardsKilled", DbType="BigInt")]
+		public System.Nullable<long> WardsKilled
+		{
+			get
+			{
+				return this._WardsKilled;
+			}
+			set
+			{
+				if ((this._WardsKilled != value))
+				{
+					this._WardsKilled = value;
 				}
 			}
 		}

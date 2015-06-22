@@ -151,6 +151,56 @@
       <Column Name="Tied" Type="System.Int32" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.ChampionStats" Member="ChampionStats">
+    <Type Name="ChampionStat">
+      <Column Name="ChampionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Wins" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Losses" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Kills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Deaths" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Assists" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MinionsKilled" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="GoldEarned" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="KillingSprees" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LargestKillingSpree" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LargestMultiKill" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="DoubleKills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TripleKills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="QuadraKills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PentaKills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="FirstBloodAssists" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FirstBloodKill" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FirstInhibitorAssist" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FirsInhibitorKill" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FirstTowerAssist" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FirstTowerKill" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InhibitorKills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TowerKills" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LargestCriticalStrike" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MagicDamageDealt" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MagicDamageDealtToChampions" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MagicDamageTaken" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PhysicalDamageDealt" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PhysicalDamageDealtToChampions" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PhysicalDamageTaken" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalDamageDealt" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalDamageDealtToChampions" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalDamageTaken" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TrueDamageDealt" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TrueDamageDealtToChampions" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TrueDamageTaken" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalHealing" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalUnitsHealed" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalTimeCrowdControlDealt" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NeutralMinionsKilled" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NeutralMinionsKilledEnemyJungle" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NeutralMinionsKilledTeamJungle" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SightWardsBoughtInGame" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="VisionWardsBoughtInGame" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="WardsPlaced" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="WardsKilled" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.FunStats" Method="FunStats">
     <ElementType IdRef="ID1" />
   </Function>

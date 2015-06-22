@@ -51,7 +51,7 @@ namespace RiotServices
     #endregion
 		
 		public RiotDataContext() : 
-				base(global::RiotServices.Properties.Settings.Default.RiotAPIConnectionString, mappingSource)
+				base(global::RiotServices.Properties.Settings.Default.RiotAPIConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}

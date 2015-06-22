@@ -53,7 +53,7 @@
         <classShapeMoniker Id="600fc0cc-62c5-43bb-b790-0568d7c63fb9" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.46875 : 8.25); (5.46875 : 3.30214680989583); (6.25 : 3.30214680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.46875 : 8.25); (5.46875 : 3.30214680989583); (6.25 : 3.30214680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/RiotDataContext/Participant/Participant_Player" />
       <nodes>
         <classShapeMoniker Id="63b8cd00-5c19-46dc-8799-ea9e76fddb17" />

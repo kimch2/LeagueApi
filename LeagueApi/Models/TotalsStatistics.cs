@@ -148,7 +148,7 @@ namespace LeagueApi.Models
                 visionSection.First(x => x.Name == "Vision Wards Bought").Values.Add(champion.VisionWardsBoughtInGame ?? 0);
                 visionSection.First(x => x.Name == "Wards Placed").Values.Add(champion.WardsPlaced ?? 0);
                 visionSection.First(x => x.Name == "Wards Killed").Values.Add(champion.WardsKilled ?? 0);
-            }
+            }            
         }
 
         public List<StatisticsGroup> Statistics { get; set; }

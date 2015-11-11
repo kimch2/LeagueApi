@@ -18,7 +18,7 @@ namespace LeagueApi.Controllers
 
                 using (var riotDb = new RiotDataContext())
                 {
-                    model.ChampionData = ChampionsService.CallService();
+                    model.ChampionData = RiotService.ChampionsService();
 
                     model.MatchCount = riotDb.Matches.Count();
                     var funStats = riotDb.FunStats().ToList();

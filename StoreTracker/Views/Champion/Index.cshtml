@@ -1,0 +1,22 @@
+﻿@model StoreTracker.Models.ChampionViewModel
+@{
+    ViewBag.Title = "Champion";
+}
+
+<h2>Champion</h2>
+
+@Model.Champions.Count<br/>
+
+@foreach (var champ in Model.Champions)
+{
+    @champ.Id<br/>
+    @champ.Owned<br/>
+    if (champ.Skins != null)
+    {
+        foreach (var skin in champ.Skins)
+        {
+            @skin<br/>
+        }
+    }
+    <br />
+}

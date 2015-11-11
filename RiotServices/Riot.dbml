@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RiotAPI" Class="RiotDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=RiotAPI.mssql.somee.com;Initial Catalog=RiotAPI;Persist Security Info=True;User ID=tucker87_SQLLogin_1" SettingsObjectName="RiotServices.Properties.Settings" SettingsPropertyName="RiotAPIConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=notquite.me;Initial Catalog=RiotAPI;User ID=RiotApiR" SettingsObjectName="RiotServices.Properties.Settings" SettingsPropertyName="RiotDataConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Match" Member="Matches">
     <Type Name="Match">
       <Column Name="BucketTime" Type="System.Int32" DbType="Int" CanBeNull="true" />

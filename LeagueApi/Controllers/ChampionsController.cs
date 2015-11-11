@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using LeagueApi.Helper;
 using LeagueApi.Models;
 using RiotServices;
 
@@ -23,7 +22,7 @@ namespace LeagueApi.Controllers
             {
                 using (var riotDb = new RiotDataContext())
                 {
-                    var championData = ChampionsService.CallService();
+                    var championData = RiotService.ChampionsService();
 
                     var availableChampionIds = riotDb.Participants
                         .Select(m => m.ChampionId ?? 0).ToList()

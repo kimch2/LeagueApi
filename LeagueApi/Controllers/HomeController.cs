@@ -21,12 +21,12 @@ namespace LeagueApi.Controllers
         {
             try
             {
-                var model = new MatchesViewModel {ChampionData = ChampionsService.CallService()};
+                var model = new MatchesViewModel {ChampionData = RiotService.ChampionsService()};
 
                 using (var riotDb = new RiotDataContext())
                     model.Matches = riotDb.Matches.Select(x => x.MatchId).ToList();
 
-                model.CurrentMatchData = MatchService.CallService(model.Matches.First());
+                model.CurrentMatchData = RiotService.MatchService(model.Matches.First());
                 model.CurrentMatchId = model.Matches.First();
                 CurrentMatchModel = model;
                 return View(model);
@@ -45,7 +45,7 @@ namespace LeagueApi.Controllers
             try
             {
                 var currentModel = CurrentMatchModel;
-                currentModel.CurrentMatchData = MatchService.CallService(currentMatchId);
+                currentModel.CurrentMatchData = RiotService.MatchService(currentMatchId);
                 CurrentMatchModel = currentModel;
                 return View(currentModel);
             }

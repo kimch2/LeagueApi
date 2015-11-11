@@ -9,7 +9,6 @@ namespace RiotAPI_GameCollector
     class Program
     {
         static List<int> MatchIds { get; set; }
-        static readonly RiotService RiotService = new RiotService();
         static DateTime StartDate { get; set; }
         static int RunTimes { get; set; }
         static int Offset { get; set; }
@@ -66,7 +65,7 @@ namespace RiotAPI_GameCollector
                     using (var riotDb = new RiotDataContext())
                     {
                         var matches = riotDb.Matches.Where(m => m.MapId == null).ToList();
-                        AddMatchData(matches, riotDb, RiotService);
+                        AddMatchData(matches, riotDb);
                     }
                 }
                 else
@@ -77,13 +76,13 @@ namespace RiotAPI_GameCollector
             }
         }
 
-        private static void AddMatchData(List<Match> matches, RiotDataContext riotDb, RiotService riotServices)
+        private static void AddMatchData(List<Match> matches, RiotDataContext riotDb)
         {
             Console.WriteLine("Updating {0} matches.", matches.Count());
 
             foreach (var match in matches)
             {
-                var matchData = riotServices.MatchService(match.MatchId);
+                var matchData = RiotService.MatchService(match.MatchId);
                 var currentMatch = riotDb.Matches.First(m => m.MatchId == match.MatchId);
                 currentMatch.AddMatchData(matchData);
 

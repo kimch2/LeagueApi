@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Riot">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 14.625" name="Riot">
   <DataContextMoniker Name="/RiotDataContext" />
   <nestedChildShapes>
     <classShape Id="640878b7-2225-4395-9263-fd9186dc8b4b" isExpanded="false" absoluteBounds="0.5, 3.625, 2, 0.45">
@@ -39,7 +39,7 @@
         <classShapeMoniker Id="09a044f3-087f-4876-87eb-b21f55a98cb8" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.5 : 3.625); (1.5 : 2.475); (3.5 : 2.475)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.5 : 3.625); (1.5 : 2.475); (3.5 : 2.475)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/RiotDataContext/Match/Match_Participant" />
       <nodes>
         <classShapeMoniker Id="640878b7-2225-4395-9263-fd9186dc8b4b" />
@@ -53,7 +53,7 @@
         <classShapeMoniker Id="600fc0cc-62c5-43bb-b790-0568d7c63fb9" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.5 : 2.25); (4.5 : 0.95)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.5 : 2.25); (4.5 : 0.95)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/RiotDataContext/Participant/Participant_Player" />
       <nodes>
         <classShapeMoniker Id="63b8cd00-5c19-46dc-8799-ea9e76fddb17" />
@@ -72,7 +72,7 @@
         <elementListCompartment Id="503068f2-0f65-48da-af33-9f56bbfdf02c" absoluteBounds="0.89000000000000012, 0.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b852b600-d634-4b65-bc6c-c946f1f7df19" isExpanded="false" absoluteBounds="5.75, 4.75, 2, 0.45">
+    <classShape Id="b852b600-d634-4b65-bc6c-c946f1f7df19" absoluteBounds="5.75, 4.75, 2, 9.6552555338541648">
       <DataClassMoniker Name="/RiotDataContext/ChampionStat" />
       <nestedChildShapes>
         <elementListCompartment Id="43ac1bfa-a26a-4c1d-9314-a55aaecc1306" absoluteBounds="5.765, 5.2100000000000009, 1.9700000000000002, 9.0952555338541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />

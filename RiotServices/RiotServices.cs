@@ -19,12 +19,12 @@ namespace RiotServices
         }
     }
 
-    public class RiotService
+    public static class RiotService
     {
         public static DateTime LastCallTime = DateTime.Now;
         public static string BaseAddress;
 
-        public List<int> ApiChallenge(int epochTime)
+        public static List<int> ApiChallenge(int epochTime)
         {
             BaseAddress = "https://na.api.pvp.net/api/lol/na/v4.1/game/ids";
             var address = String.Format("{0}?beginDate={1}", BaseAddress, epochTime);
@@ -33,7 +33,7 @@ namespace RiotServices
             return resultList;
         }
 
-        public MatchResponse MatchService(long matchId)
+        public static MatchResponse MatchService(long matchId)
         {
             BaseAddress = "https://na.api.pvp.net/api/lol/na/v2.2/match/";
             var address = String.Format("{0}{1}?{2}", BaseAddress, matchId, RiotApiSettings.ApiKeyQuery);
@@ -42,7 +42,7 @@ namespace RiotServices
             return resultList;
         }
 
-        public ChampionsResponse ChampionsService()
+        public static ChampionsResponse ChampionsService()
         {
             BaseAddress = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?dataById=true";
             var json = Call(BaseAddress);
@@ -50,7 +50,7 @@ namespace RiotServices
             return resultList;
         }
 
-        public ChampionResponse ChampionService(int id)
+        public static ChampionResponse ChampionService(int id)
         {
             BaseAddress = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/";
             var address = String.Format("{0}{1}?dataById=true", BaseAddress, id);

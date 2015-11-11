@@ -5,7 +5,6 @@ namespace RiotServices
 {
     public class ChampionsResponse
     {
-
         [JsonProperty("data")]
         public Dictionary<int, ChampionResponse> Champions { get; set; }
     }
